@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logout</title>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+    function logout(){
+//        alert("sad");
+        $.ajax({
+            type:"post",
+            url:"/cd/logout.from",
+            datatype:"html",
+            success:function (msg) {
+                if(msg==1){
+                    window.location.href='login.html';
+                }
+            }
+        })
+    }
+    window.onload=logout();
+</script>
+
+</body>
+</html>

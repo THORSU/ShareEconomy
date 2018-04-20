@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mini {
+  width: 40px;
+  height: 40px;
+}
+
+#my_input {
+  padding-left: 20%;
+}
+#my_main{
+  dianplay:none;
+}

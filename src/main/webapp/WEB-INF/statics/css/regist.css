@@ -1,0 +1,34 @@
+html {
+  /*以iPhone6为基准 375/15px = 25*/
+  font-size: 15px;
+}
+
+.my_regist {
+  /*  background-color: rgba(100, 149, 237, 0.8);*/
+  background-image: url(../img/3.jpg);
+  background-size: 100% 100%;
+}
+
+#my_input_all {
+  width: 90%;
+  position: relative;
+  left: 5%;
+  top: 20%;
+}
+
+.ui-content {
+  position: fixed;
+  top: 15rem;
+  background: rgba(105, 105, 105, 0.65);
+  width: 80%;
+  left: 5%;
+}
+
+.my_re_input {
+  width: 95%;
+  margin-left: 2%;
+}
+
+.my_re_button {
+  margin-left: 33%;
+}

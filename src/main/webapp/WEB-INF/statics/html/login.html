@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <title>SharedEconomy</title>
+</head>
+<body>
+<div data-role="page" class="my_login">
+    <div data-role="content" class="ui-content">
+        <form>
+            <!--输入用户名和密码-->
+            <div class="my_input">
+                <label for="username"></label>
+                <input type="text" maxlength="11" autocomplete="off" placeholder="请输入账号" id="username">
+                <span id="loginTip">&nbsp </span>
+            </div>
+            <div class="my_input">
+                <label for="password"></label>
+                <input type="password" class="input" maxlength="16" autocomplete="off" placeholder="请输入密码" id="password">
+                <span id="passwordTip">&nbsp </span>
+            </div>
+            <!--<div><a id="my_forgot" href="javascript:;" onclick="#" target="_blank">忘记密码？</a>-->
+            <!--&lt;!&ndash;href="javascript:;  删除a的默认跳转&ndash;&gt;-->
+            <!--</div>-->
+            <!--登录注册按钮-->
+            <div class="my_button">
+                <input type="button" value="登录" data-inline="true" onclick="login()" data-transition="slide">
+                <input type="button" value="注册" data-inline="true" onclick="window.location='SignUp.html'">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="my_footer">
+</div>
+</div>
+<link rel="stylesheet" href="../css/login.css" type="text/css" />
+
+<script type="text/javascript" src="../js/login.js">
+
+</script>
+</body>
+</html>
+
+

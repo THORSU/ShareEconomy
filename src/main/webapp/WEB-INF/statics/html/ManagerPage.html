@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+商品类型：<input type="text" id="Oname"/>
+投入数量：<input type="text" id="Omount"/>
+价格：<input type="text" id="Oprice"/><br>
+增加商品：<input type="button" id="inc" value="增加" onclick="Inc()"/>
+
+</body>
+
+<script type="text/javascript">
+    function Inc() {
+        var Oname=$("#Oname").val();
+        var Oamount=$("#Omount").val();
+        var Oprice=$("#Oprice").val();
+        $.ajax({
+            type:"post",
+            url:"/ab/IncObj.from?Oname="+Oname+"&Oamount="+Oamount+"&Oprice="+Oprice,
+            dataType:"html",
+            success:function (msg) {
+                if(msg==1){
+                    alert("添加成功");
+                }
+                else {
+                    alert("fail");
+                }
+            }
+        })
+    }
+    </script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<!--<div id="res1" style="color: red"></div>-->
+
+<div data-role="page" class="my_regist">
+    <div data-role="header">
+        <h1>欢迎注册</h1>
+    </div>
+    <div data-role="content" class="ui-content">
+        <form>
+            <div class="my_re_input">
+                <label for="username"></label>
+                <input type="text" class="input" maxlength="11"onblur="check(this.id)" placeholder="请输入手机号" id="username">
+                <!--<span id="passwordTip1">&nbsp </span>-->
+            </div>
+            <div class="my_re_input">
+                <label for="password"></label>
+                <input type="password" class="input" maxlength="16" autocomplete="off" placeholder="请输入密码" id="password">
+                <!--<span id="passwordTip1">&nbsp </span>-->
+            </div>
+            <!--<div class="my_re_input">-->
+                <!--<label for="Repassword"></label>-->
+                <!--<input type="password" id="Repassword" class="input" maxlength="16" placeholder="再次确认密码">-->
+                <!--&lt;!&ndash;<span id="passwordTip">&nbsp </span>&ndash;&gt;-->
+            <!--</div>-->
+            <div class="my_re_input my_code">
+                <label for="vcode"></label>
+                <input type="text" id="vcode" class="form-control" placeholder="请输入验证码" onblur="validateCode()"/>
+            </div>
+            <div class="my_code">
+            <span id="yanzhengma" onclick="getRandomMath(this)"></span>
+            </div>
+            <div class="my_re_button">
+                <input type="button" value="确认注册" data-inline="true" onclick="SignUp()">
+            </div>
+        </form>
+    </div>
+</div>
+<link rel="stylesheet" href="../css/regist.css" type="text/css" />
+<script type="text/javascript" src="../js/SignUp.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+<!--用户名:<input type="text" placeholder="input your username" id="username1" onblur="check(this.id)"/><br>-->
+<!--<div id="res" style="color: red"></div>-->
+<!--密码:<input type="password" placeholder="input your password" id="password1"/><br>-->
+<!--昵称：<input type="text" placeholder="your alias" id="Aname"><br>-->
+<!--联系方式:<input type="text" placeholder="input your phone" id="usermobile"/><br>-->
+<!--身份证号:<input type="text" placeholder="input your IDnumber" id="IDnumber"/><br>-->
+<!--提交:<input type="button" value="submit" onclick="SignUp()">-->
+
+<!--<script type="text/javascript" src="../js/SignUp.js">-->
+<!--</script>-->

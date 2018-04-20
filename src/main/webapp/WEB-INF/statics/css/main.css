@@ -1,0 +1,21 @@
+#my_nav{
+  margin-bottom: 0px;
+}
+#my_nav_div{
+  height:50px;
+  line-height:50px;
+}
+#my_dropdown{
+  float:right;
+}
+#my_container{
+padding-left: 0px;
+padding-right: 0px;
+}
+#my_jumbotron{
+   margin-bottom: 0px;
+}
+.thumbnail{
+  width:30%;
+  display:inline-block;
+}

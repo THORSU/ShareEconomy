@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recharge</title>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--<div align="center">-->
+    <select id="select2" name="demo2">
+        <option selected value="10">10￥</option>
+        <option value="20">20￥</option>
+        <option value="50">50￥</option>
+        <option value="100">100￥</option>
+    </select>
+
+    <!--<input type="button" value="充值" onclick= "Recharge()" >-->
+    <input type="button" value="查询余额" onclick="Balance()">
+<!--</div>-->
+
+<div>
+    <ul class="nav navbar-nav">
+        <li><a href="#" type="button" data-toggle="modal" data-target="#myModal">充值</a></li>
+    </ul>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    充值——请输入密码
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="my_input">
+                    <form>
+                        <input id="input_a" class="mini" maxlength="1" type="password" tabindex="1" onkeyup="auto(this,0)"/>
+                        <input id="input_b" class="mini" maxlength="1" type="password" tabindex="2" onkeyup="auto(this,1)"/>
+                        <input id="input_c" class="mini" maxlength="1" type="password" tabindex="3" onkeyup="auto(this,2)"/>
+                        <input id="input_d" class="mini" maxlength="1" type="password" tabindex="4" onkeyup="auto(this,3)"/>
+                        <input id="input_e" class="mini" maxlength="1" type="password" tabindex="5" onkeyup="auto(this,4)"/>
+                        <input id="input_f" class="mini" maxlength="1" type="password" tabindex="6" onkeyup="auto(this,5)"/>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回
+                </button>
+                <button type="button" id="make_sure" class="btn btn-primary" onclick="mimaInput(),makeSure()">
+                    确认
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../js/UserOperation.js"></script>
+<link rel="stylesheet" href="../css/houtai_main.css" type="text/css" />
+<script src="../js/houtai_main.js"></script>
+
+</body>
+</html>

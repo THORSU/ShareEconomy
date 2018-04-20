@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+共享客服为您服务<br/>
+<input id="text" type="text"/>
+<button onclick="send()">发送消息</button>
+<hr/>
+<button onclick="closeWebSocket()" style="display: none"></button>
+<hr/>
+<div id="message"></div>
+</body>
+<script type="text/javascript">
+    var websocket = null;//判断当前浏览器是否支持WebSocket
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:8080/websocket");
+    }
+    else {
+        alert('当前浏览器 Not support websocket')
+    }
+
+    websocket.onerror = function () {
+        setMessageInnerHTML("连接发生错误");
+    };
+
+    websocket.onopen = function () {
+        setMessageInnerHTML("感谢您对共享经济的支持，有任何问题请咨询客服");
+    };
+
+    websocket.onmessage = function (event) {
+        setMessageInnerHTML(event.data);
+    };
+
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    };
+
+    function setMessageInnerHTML(innerHTML) {
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';
+    }
+
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    function send() {
+        var message = document.getElementById('text').value;
+        websocket.send(message);
+    }
+</script>
+</html>

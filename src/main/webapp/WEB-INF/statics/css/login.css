@@ -1,0 +1,60 @@
+html {
+  /*以iPhone6为基准 375/15px = 25*/
+  font-size: 15px;
+}
+
+.my_login {
+  background-image: url(../img/3.jpg);
+  background-size: 100% 100%;
+}
+
+.ui-content {
+  position: fixed;
+  top: 15rem;
+  background: rgba(105, 105, 105, 0.65);
+  width: 80%;
+  left: 5%;
+}
+
+#my_footer {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.45);
+  width: 100%;
+  height: 3rem;
+  left: 0;
+  bottom: 0;
+}
+
+#my_footer p {
+  margin-left: 25%;
+}
+
+#my_footer a {
+  text-decoration: underline;
+  color: red;
+  margin-left: 2%;
+}
+
+#my_forgot {
+  text-decoration: none;
+  color: #000;
+  margin-left: 60%;
+}
+
+.my_input {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.my_button {
+  position: relative;
+  top: 1rem;
+  left: 12%;
+  width: 100%;
+}
+
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
+  width: 25%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+}

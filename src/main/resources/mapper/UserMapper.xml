@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.share.mapper.UserMapper">
+	<resultMap type="com.share.pojo.User" id="UserInfoResult">
+	    <id column="uid" property="uid"/>
+		<result property="uname" column="uname"/>
+		<result property="upwd" column="upwd"/>
+		<result property="alias" column="alias"/>
+		<result property="umobile" column="umobile"/>
+		<result property="IDnumber" column="IDnumber"/>
+		<result property="wallet" column="wallet"/>
+		<result property="condition" column="condition"></result>
+	</resultMap>
+
+    <!-- 通过id查找用户 -->
+	<select id="CheckUname" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
+		select * from User where uname=#{uname}
+	</select>
+
+    <select id="getUserById" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
+        select * from `User` where `uid`=#{uid}
+    </select>
+    <!--登录-->
+	<select id="login" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
+		select * from User where uname=#{uname} and upwd=#{upwd}
+	</select>
+
+	<select id="getName" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
+		SELECT * from User where uid=#{uid}
+	</select>
+
+
+	<update id="loginChangeCon" parameterType="com.share.pojo.User">
+		update `User`
+		<trim prefix="set" suffixOverrides=",">
+			<if test="uname!=null">`uname`=#{uname},</if>
+			<if test="upwd!=null">`upwd`=#{upwd},</if>
+			<if test="umobile!=null">`umobile`=#{umobile},</if>
+			<if test="IDnumber!=null">`IDnumber`=#{IDnumber},</if>
+			<if test="wallet!=null">`wallet`=#{wallet},</if>
+			<if test="condition!=null">`condition`=#{condition},</if>
+		</trim>
+		where uid=#{uid}
+	</update>
+
+	<update id="Deduct" parameterType="com.share.pojo.User">
+		UPDATE User
+		<trim prefix="set" suffixOverrides=",">
+		<if test="wallet!=null">`wallet`=#{wallet},</if>
+		</trim>
+		 	WHERE uname=#{uname}
+	</update>
+
+
+	<insert id="SignUp" parameterType="com.share.pojo.User">
+	   insert into User values(#{uid},#{uname},#{upwd},#{alias},#{umobile},#{IDnumber},#{wallet},#{condition});
+	</insert>
+
+	<update id="UpdateInfo" parameterType="com.share.pojo.User">
+		UPDATE User
+		<trim prefix="set" suffixOverrides=",">
+			<if test="alias!=null">alias=#{alias},</if>
+			<if test="upwd!=null">upwd=#{upwd},</if>
+		</trim>
+		WHERE uid=#{uid}
+	</update>
+
+	<update id="reCharge" parameterType="com.share.pojo.User">
+		UPDATE User
+		<trim prefix="set" suffixOverrides=",">
+			<if test="wallet!=null">wallet=#{wallet},</if>
+		</trim>
+				WHERE uname=#{uname}
+	</update>
+
+	<!--<select id="IsZero" parameterType="String">-->
+		<!--select wallet from User where uname=#{uname}-->
+
+	<!--</select>mybatis缺点之一，resultmap确定后无法查询单独列-->
+
+
+</mapper> 

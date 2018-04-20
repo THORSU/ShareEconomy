@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+管理员:<input type="text" placeholder="手机号码/邮箱" id="Mname" /><br>
+<div id="res" style="color: red"></div>
+密码：<input type="password" placeholder="请输入密码" id="Mpwd"/><br>
+登录：<input type="button" value="登录" onclick="Mlogin()"/><br>
+
+</body>
+
+<script type="text/javascript">
+
+    function Mlogin() {
+        var Mname=$("#Mname").val();
+        var Mpwd=$("#Mpwd").val();
+//        var regex="\\w{3,20}@\\w+\\.(com|org|cn|net|gov)";
+//        if(Mname.matches(regex)){
+////            $("#res").html("不合法");
+//            alert("adsdsa");
+//        }
+//        else {
+            $.ajax({
+                type: "post",
+                url: "/ab/Mlogin.from?Mname=" + Mname.trim() + "&Mpwd=" + Mpwd.trim(),
+                dataType: "html",
+                success: function (msg) {
+                    if (msg == "1") {
+                        window.location.href = 'ManagerPage.html';
+                    }
+                    else {
+                        alert("fail");
+                    }
+                }
+
+            })
+//        }
+    }
+
+</script>
+
+</html>
