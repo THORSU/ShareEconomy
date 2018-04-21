@@ -34,6 +34,7 @@ public class LoginController {
         user.setUpwd(password);
         User res = userService.login(user);
 
+
         if (res != null) {
             if (res.getCondition().equals("0")) {//change the condition
                     res.setCondition("1");
