@@ -2,7 +2,6 @@ package com.share.controller.ManagerController;
 
 import com.share.pojo.Object_1;
 import com.share.service.ObjectService;
-import com.sun.deploy.net.HttpResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
