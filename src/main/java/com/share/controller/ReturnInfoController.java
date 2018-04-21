@@ -32,6 +32,7 @@ public class ReturnInfoController {
         object1.setOid(Oid);
         Object_1 res=objectService.ObjInfo(object1);
 
+
         if(res!=null){
             Cookie cookie4=new Cookie("Obill",res.getPrice());//make the price of this.id as one of the cookies.
             cookie4.setPath("/");
