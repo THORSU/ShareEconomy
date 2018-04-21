@@ -34,7 +34,7 @@ public class SignUpController {
         String usermobile = request.getParameter("usermobile").trim();
         String IDnumber = request.getParameter("IDnumber").trim();
         user = new User();
-        user.setUid(RandomAccessUtil.getRandom("user"));//uuid
+//        user.setUid(RandomAccessUtil.getRandom("user"));//uuid
         user.setUname(username);
         user.setUpwd(password);
         user.setAlias(Aname);

@@ -4,69 +4,60 @@ package com.share.pojo;
  * Created by weixin on 17-8-6.
  */
 public class Object_1 {
-    private String oid;//产品id
-    private String object;//产品类型
-    private String amount;//产品数量
+    private String id;//产品id
+    private String code;//产品编码
+    private String name;//产品名称
     private String price;//每小时计费
-    private String pwd;
-    private String condition;//使用状态
+    private String remark;
 
-    public String getOid() {
-        return oid;
+    public String getId() {
+        return id;
     }
 
-    public void setOid(String oid) {
-        this.oid = oid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getObject() {
-        return object;
+    public String getCode() {
+        return code;
     }
 
-    public void setObject(String object) {
-        this.object = object;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getName() {
+        return name;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
     public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override
     public String toString() {
         return "Object_1{" +
-                "oid='" + oid + '\'' +
-                ", object='" + object + '\'' +
-                ", amount='" + amount + '\'' +
+                "id='" + id + '\'' +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", condition='" + condition + '\'' +
+                ", remark='" + remark + '\'' +
                 '}';
     }
 }

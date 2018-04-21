@@ -1,6 +1,5 @@
 package com.share.controller;
 
-import com.share.pojo.Object_1;
 import com.share.pojo.User;
 import com.share.service.UserService;
 import org.apache.log4j.Logger;

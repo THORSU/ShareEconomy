@@ -29,14 +29,15 @@ public class IncObjectController {
     @ResponseBody
     Object GetObject(HttpServletRequest request, HttpServletResponse response){
         String Oname=request.getParameter("Oname").trim();
-        String Oamount=request.getParameter("Oamount").trim();
+//        String Oamount=request.getParameter("Oamount").trim();
         String Oprice=request.getParameter("Oprice").trim();
         object=new Object_1();
-        object.setOid("");
-        object.setObject(Oname);
-        object.setAmount(Oamount);
+        object.setName(Oname);
+//        object.setAmount(Oamount);
         object.setPrice(Oprice);
-        object.setCondition("0");
+        object.setCode("");
+        object.setRemark("");
+//        object.setCondition("0");
         int res=objectService.IncObj(object);
 
         if(res == 1){

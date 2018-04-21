@@ -29,7 +29,7 @@ public class ReturnInfoController {
     Object GetOInfo(HttpServletRequest request,HttpServletResponse response){
         String Oid=request.getParameter("Chioce").trim();
         object1=new Object_1();
-        object1.setOid(Oid);
+//        object1.setOid(Oid);
         Object_1 res=objectService.ObjInfo(object1);
 
 
@@ -40,11 +40,12 @@ public class ReturnInfoController {
             response.addCookie(cookie4);
 
             logger.info(res);
-            return res.getPwd();
+//            return res.getPwd();
         }
         else {
             logger.error(res);
             return "0";
         }
+        return null;
     }
 }

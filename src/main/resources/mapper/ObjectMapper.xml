@@ -3,24 +3,17 @@
                 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.share.mapper.ObjectMapper">
-    <resultMap type="com.share.pojo.Object_1" id="ObjectInfoResult">
-        <id column="oid" property="oid"/>
-        <result property="object" column="object"/>
-        <result property="amount" column="amount"/>
-        <result property="price" column="price"/>
-        <result property="pwd" column="pwd"/>
-        <result property="condition" column="condition"></result>
-    </resultMap>
+
 
     <insert id="IncObj" parameterType="com.share.pojo.Object_1">
-    INSERT into Objects values(#{oid},#{object},#{amount},#{price},#{condition});
+    INSERT into Objects(code,name,price,remark) values(#{code},#{name},#{price},#{remark});
 </insert>
 
-    <select id="ObjInfo" parameterType="com.share.pojo.Object_1" resultMap="ObjectInfoResult">
-        SELECT * from Objects where oid=#{oid}
+    <select id="ObjInfo" parameterType="com.share.pojo.Object_1" resultType="com.share.pojo.Object_1">
+        SELECT * from Objects where id=#{id}
     </select>
 
-    <select id="searchGoodsName" parameterType="com.share.pojo.Object_1" resultMap="ObjectInfoResult">
-        select * from Objects where object like CONCAT('%',#{object},'%')
+    <select id="searchGoodsName" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
+        select * from Objects where name like CONCAT('%',#{name},'%')
     </select>
     </mapper>
