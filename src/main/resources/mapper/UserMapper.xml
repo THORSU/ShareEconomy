@@ -55,7 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="SignUp" parameterType="com.share.pojo.User">
-	   insert into User values(#{uname},#{upwd},#{alias},#{umobile},#{IDnumber},#{wallet},#{condition});
+	   insert into User (uname,upwd,alias,umobile,IDnumber,wallet,`condition`)
+	   values(#{uname},#{upwd},#{alias},#{umobile},#{IDnumber},#{wallet},#{condition});
 	</insert>
 
 	<update id="UpdateInfo" parameterType="com.share.pojo.User">
