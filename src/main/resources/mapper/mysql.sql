@@ -40,6 +40,7 @@ CREATE TABLE Orders
   ENGINE = InnoDB
   CHARSET = utf8;
 
+DROP TABLE IF EXISTS Objects;
 CREATE TABLE Objects
 (
   id     INT(20) AUTO_INCREMENT
@@ -49,7 +50,7 @@ CREATE TABLE Objects
   COMMENT '商品序列号',
   name   VARCHAR(50)  NULL
   COMMENT '商品名称',
-  price  DECIMAL(2)   NULL
+  price  DOUBLE (5,2)   NULL
   COMMENT '商品租用价格',
   remark VARCHAR(200) NULL
   COMMENT '商品备注'
