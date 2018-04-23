@@ -7,7 +7,7 @@
 
     <insert id="IncObj" parameterType="com.share.pojo.Object_1">
     INSERT into Objects(code,name,price,remark) values(#{code},#{name},#{price},#{remark});
-</insert>
+    </insert>
 
     <select id="ObjInfo" parameterType="com.share.pojo.Object_1" resultType="com.share.pojo.Object_1">
         SELECT * from Objects where id=#{id}
