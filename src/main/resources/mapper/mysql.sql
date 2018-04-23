@@ -17,7 +17,7 @@ CREATE TABLE `User`(
 
 CREATE TABLE Orders
 (
-  id              INT(20)     NOT NULL
+  id        INT(20)     NOT NULL
   COMMENT '主键id'
     PRIMARY KEY,
   userName        VARCHAR(20) NULL
@@ -57,16 +57,6 @@ CREATE TABLE Objects
   ENGINE = InnoDB
   AUTO_INCREMENT = 1000
   CHARSET = utf8;
-
-CREATE TABLE Manager
-(
-  mid       VARCHAR(255) NOT NULL
-    PRIMARY KEY,
-  mname     VARCHAR(20)  NOT NULL,
-  mpassword VARCHAR(20)  NULL
-)
-  ENGINE = InnoDB
-  COLLATE = utf8_unicode_ci;
 
 CREATE TABLE bikeTable
 (
