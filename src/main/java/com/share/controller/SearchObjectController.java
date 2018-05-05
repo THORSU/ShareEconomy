@@ -27,9 +27,10 @@ import java.io.IOException;
 @RequestMapping("/night")
 public class SearchObjectController {
     private static Logger logger= Logger.getLogger(SearchObjectController.class);
-    @RequestMapping(value="/Search.from", method = RequestMethod.POST,produces = "application/json; charset=utf-8")
+
+    @RequestMapping(value = "/SearchES.from", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
-    Object search(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    Object searchES(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try{
             String GoodsName=request.getParameter("Search");
             //es获取连接
