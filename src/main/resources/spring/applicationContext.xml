@@ -26,5 +26,6 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
     <!--http://blog.csdn.net/zhang854429783/article/details/6785574-->
     <context:component-scan base-package="com.share.service,com.share.mapper"/>
 
-
+    <!--redis自动扫描配置-->
+    <import resource="redis-context.xml"/>
 </beans>
