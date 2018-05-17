@@ -5,10 +5,28 @@ package com.share.pojo;
  */
 public class Object_1 {
     private String id;//产品id
+    private String merchantName;//商家名
     private String code;//产品编码
     private String name;//产品名称
     private String price;//每小时计费
-    private String remark;
+    private String goodsState;//状态位
+    private String remark;//备注
+
+    public String getMerchantName() {
+        return merchantName;
+    }
+
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
+    }
+
+    public String getGoodsState() {
+        return goodsState;
+    }
+
+    public void setGoodsState(String goodsState) {
+        this.goodsState = goodsState;
+    }
 
     public String getId() {
         return id;
