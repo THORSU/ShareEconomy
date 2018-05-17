@@ -14,7 +14,7 @@ CREATE TABLE `User`(
   AUTO_INCREMENT = 1000
   DEFAULT CHARSET =utf8;
 
-
+DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders
 (
   id        INT(20)     NOT NULL
@@ -43,16 +43,20 @@ CREATE TABLE Orders
 DROP TABLE IF EXISTS Objects;
 CREATE TABLE Objects
 (
-  id     INT(20) AUTO_INCREMENT
+  id            INT(20) AUTO_INCREMENT
   COMMENT '主键id'
     PRIMARY KEY,
-  code   VARCHAR(20)  NULL
+  code          VARCHAR(20)  NULL
   COMMENT '商品序列号',
-  name   VARCHAR(50)  NULL
+  merchant_name VARCHAR(20)  NULL
+  COMMENT '商家名',
+  goodsname     VARCHAR(50)  NULL
   COMMENT '商品名称',
-  price  DOUBLE (5,2)   NULL
+  price         DOUBLE (5,2) NULL
   COMMENT '商品租用价格',
-  remark VARCHAR(200) NULL
+  goods_state   VARCHAR(20)  NOT NULL
+  COMMENT '商品状态',
+  remark        VARCHAR(200) NULL
   COMMENT '商品备注'
 )
   ENGINE = InnoDB
