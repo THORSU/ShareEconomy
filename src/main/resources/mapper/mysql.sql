@@ -14,10 +14,10 @@ CREATE TABLE `User`(
   AUTO_INCREMENT = 1000
   DEFAULT CHARSET =utf8;
 
-
+DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders
 (
-  id        INT(20)     NOT NULL
+  id              INT(20)     NOT NULL
   COMMENT '主键id'
     PRIMARY KEY,
   userName        VARCHAR(20) NULL
@@ -26,7 +26,7 @@ CREATE TABLE Orders
   COMMENT '商品主表对应id',
   `	subObjectId` INT(20)     NULL
   COMMENT '商品子表id',
-  code            VARCHAR(20) NULL
+  order_code      VARCHAR(20) NULL
   COMMENT '订单号',
   bill            DECIMAL(2)  NULL
   COMMENT '消费金额',
@@ -43,22 +43,22 @@ CREATE TABLE Orders
 DROP TABLE IF EXISTS Objects;
 CREATE TABLE Objects
 (
-  id     INT(20) AUTO_INCREMENT
+  id          INT(20) AUTO_INCREMENT
   COMMENT '主键id'
     PRIMARY KEY,
-  code   VARCHAR(20)  NULL
+  Object_code VARCHAR(20)  NULL
   COMMENT '商品序列号',
-  name   VARCHAR(50)  NULL
+  name        VARCHAR(50)  NULL
   COMMENT '商品名称',
-  price  DOUBLE (5,2)   NULL
+  price       DOUBLE(5, 2) NULL
   COMMENT '商品租用价格',
-  remark VARCHAR(200) NULL
+  remark      VARCHAR(200) NULL
   COMMENT '商品备注'
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 1000
   CHARSET = utf8;
-
+DROP TABLE IF EXISTS bikeTable;
 CREATE TABLE bikeTable
 (
   id          INT(20)      NOT NULL
@@ -66,7 +66,7 @@ CREATE TABLE bikeTable
     PRIMARY KEY,
   objectId    INT(20)      NULL
   COMMENT '商品主表对应id',
-  code        VARCHAR(20)  NULL
+  sub_code    VARCHAR(20)  NULL
   COMMENT '子商品序列号',
   password    VARCHAR(20)  NULL
   COMMENT '子商品密码',
