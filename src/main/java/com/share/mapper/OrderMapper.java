@@ -9,5 +9,6 @@ public interface OrderMapper {
 
     List<Orders> getOrdersByUserName(@Param("userName") String username);
 
-    List<Orders> insertOrdersByuserName(@Param("userName") String username);
+    public int insertOrdersByUserName(Orders orders);
+
 }

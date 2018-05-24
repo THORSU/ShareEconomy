@@ -5,12 +5,14 @@
 
 <mapper namespace="com.share.mapper.OrderMapper">
 
-    <insert id="insertOederUserName" parameterType="java.lang.String" resultType="com.share.pojo.Orders">
-
-    </insert>
-
     <select id="getOrdersByUserName" parameterType="java.lang.String" resultType="com.share.pojo.Orders">
         select * from Orders where userName = #{userName}
     </select>
+
+    <insert id="insertOrdersByUserName" parameterType="com.share.pojo.Orders">
+        insert into Orders (userName,ObjectId,subObjectId,order_code,bill,period,startTime,endTime)
+        values(#{userName},#{ObjectId},#{subObjectId},#{order_code},#{bill},#{period},#{startTime},#{endTime});
+    </insert>
+
 </mapper>
 

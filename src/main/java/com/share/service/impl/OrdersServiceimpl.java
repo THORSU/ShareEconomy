@@ -29,6 +29,9 @@ public class OrdersServiceimpl implements OrdersService {
         }
     }
 
-//    @Override
-//    public  List<Orders> insertOrdersBy
+    @Override
+    public int insertOrdersByUserName(Orders orders) {
+        return orderMapper.insertOrdersByUserName(orders);
+    }
+
 }

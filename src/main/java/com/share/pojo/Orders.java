@@ -16,7 +16,7 @@ public class Orders {
 
     private Long subObjectId;//'商品子表id'
 
-    private String code;//'订单号'
+    private String order_code;//'订单号'
 
     private BigDecimal bill;//'消费金额'
 
@@ -33,7 +33,7 @@ public class Orders {
                 ", userName='" + userName + '\'' +
                 ", objectId=" + objectId +
                 ", subObjectId=" + subObjectId +
-                ", code='" + code + '\'' +
+                ", order_code='" + order_code + '\'' +
                 ", bill=" + bill +
                 ", period='" + period + '\'' +
                 ", startTime=" + startTime +
@@ -73,12 +73,12 @@ public class Orders {
         this.subObjectId = subObjectId;
     }
 
-    public String getCode() {
-        return code;
+    public String getOrder_code() {
+        return order_code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setOrder_code(String order_code) {
+        this.order_code = order_code;
     }
 
     public BigDecimal getBill() {

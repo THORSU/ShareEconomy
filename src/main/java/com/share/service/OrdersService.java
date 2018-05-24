@@ -7,4 +7,8 @@ import java.util.List;
 public interface OrdersService {
 
     public List<Orders> getOrdersByUserName(String username);
+
+    public int insertOrdersByUserName(Orders orders);
+
+//    public int insertOrder (Orders orders);
 }
