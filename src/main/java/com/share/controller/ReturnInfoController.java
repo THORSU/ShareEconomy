@@ -34,7 +34,7 @@ public class ReturnInfoController {
 
 
         if(res!=null){
-            Cookie cookie4=new Cookie("Obill",res.getPrice());//make the price of this.id as one of the cookies.
+            Cookie cookie4 = new Cookie("Obill", res.getObjectPrice());//make the price of this.id as one of the cookies.
             cookie4.setPath("/");
             cookie4.setMaxAge(60*60*24);
             response.addCookie(cookie4);

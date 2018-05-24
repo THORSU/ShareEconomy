@@ -34,7 +34,7 @@ public class ObjectServiceimpl implements ObjectService {
         if(res.size()!=0){
             StringBuffer temp = new StringBuffer();
             for (int i=0;i<res.size();i++){
-                temp.append(res.get(i).getName()+",");//将搜索的结果的用逗号分开，加入到temp中
+                temp.append(res.get(i).getObjectName() + ",");//将搜索的结果的用逗号分开，加入到temp中
             }
             return temp.toString();//将搜索结果发给前段
         }
