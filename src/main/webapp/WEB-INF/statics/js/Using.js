@@ -58,11 +58,18 @@ function Paying() {
                         dataType: "html",
                         success: function (msg) {
                             console.log(msg);
+                            Deduct(msg);
+                            if (msg == "insert successful!") {
+                                alert("插入成功")
+                                window.location.href = 'SuccessPay.html';
+                            }
+                            else {
+                                alert("insert fail!")
+                            }
                         }
                     })
                 }
-                Deduct(msg);
-                window.location.href = 'SuccessPay.html';
+
             }
         })
     }
