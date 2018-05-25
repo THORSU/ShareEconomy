@@ -1,7 +1,6 @@
 package com.share.pojo;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * Created by weixin on 18-4-21.
@@ -16,15 +15,31 @@ public class Orders {
 
     private Long subObjectId;//'商品子表id'
 
-    private String order_code;//'订单号'
+    private String orderCode;//'订单号'
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+
+    public void setOrderCode(String orderCode) {
+        this.orderCode = orderCode;
+    }
 
     private BigDecimal bill;//'消费金额'
 
     private String period;//'使用时间'
 
-    private Date startTime;//'使用起始时间'
+    private String startTime;//'使用起始时间'
 
-    private Date endTime;//'使用结束时间'
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    private String endTime;//'使用结束时间'
 
     @Override
     public String toString() {
@@ -33,7 +48,7 @@ public class Orders {
                 ", userName='" + userName + '\'' +
                 ", objectId=" + objectId +
                 ", subObjectId=" + subObjectId +
-                ", order_code='" + order_code + '\'' +
+                ", order_code='" + orderCode + '\'' +
                 ", bill=" + bill +
                 ", period='" + period + '\'' +
                 ", startTime=" + startTime +
@@ -73,13 +88,7 @@ public class Orders {
         this.subObjectId = subObjectId;
     }
 
-    public String getOrder_code() {
-        return order_code;
-    }
 
-    public void setOrder_code(String order_code) {
-        this.order_code = order_code;
-    }
 
     public BigDecimal getBill() {
         return bill;
@@ -97,19 +106,4 @@ public class Orders {
         this.period = period;
     }
 
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
 }

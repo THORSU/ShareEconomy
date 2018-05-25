@@ -17,24 +17,24 @@ CREATE TABLE `User`(
 DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders
 (
-  id              INT(20)     NOT NULL
+  id            INT(20) AUTO_INCREMENT NOT NULL
   COMMENT '主键id'
     PRIMARY KEY,
-  userName        VARCHAR(20) NULL
+  userName      VARCHAR(20)            NULL
   COMMENT '用户名（手机号)',
-  objectId        INT(20)     NULL
+  objectId      INT(20)                NULL
   COMMENT '商品主表对应id',
-  `	subObjectId` INT(20)     NULL
+  `subObjectId` INT(20)                NULL
   COMMENT '商品子表id',
-  order_code      VARCHAR(20) NULL
+  orderCode     VARCHAR(20)            NULL
   COMMENT '订单号',
-  bill            DECIMAL(2)  NULL
+  bill          DECIMAL(2)             NULL
   COMMENT '消费金额',
-  period          VARCHAR(10) NULL
+  period        VARCHAR(10)            NULL
   COMMENT '使用时间',
-  startTime       DATETIME    NULL
+  startTime     VARCHAR(20)            NULL
   COMMENT '使用起始时间',
-  endTime         DATETIME    NULL
+  endTime       VARCHAR(20)            NULL
   COMMENT '使用结束时间'
 )
   ENGINE = InnoDB

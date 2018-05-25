@@ -34,4 +34,14 @@ public class OrdersServiceimpl implements OrdersService {
         return orderMapper.insertOrdersByUserName(orders);
     }
 
+    @Override
+    public int updateOrder(Orders orders) {
+        return 0;
+    }
+
+//    @Override
+//    public int updateOrder(Orders orders) {
+//        return  orderMapper.updateOrder;
+//    }
+
 }

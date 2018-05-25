@@ -36,19 +36,33 @@ function Deduct(msg) {
 function Paying() {
     if (isUp!=true) {
         var time = document.getElementById("mytime").innerText;
-                   console.log(time);
+        console.log(time);
+        console.log(JSON.stringify(time));
 
         $.ajax({
             type: "post",
             url: "/ef/Paying.from?time=" + time.trim(),
+            data: JSON.stringify(time),
             dataType: "html",
             success: function (msg) {
+                console.log(msg);
                 var con;
                 con = confirm("确定费用：" + msg);
+                var period = time;
+                var bill = msg;
+                console.log(period);
                 if (con == true) {
-                    Deduct(msg);
-                               window.location.href = 'SuccessPay.html';
+                    $.ajax({
+                        url: "/order/insertOrder.form?period=" + period.trim() + "&bill=" + bill.trim(),
+                        type: "post",
+                        dataType: "html",
+                        success: function (msg) {
+                            console.log(msg);
+                        }
+                    })
                 }
+                Deduct(msg);
+                window.location.href = 'SuccessPay.html';
             }
         })
     }

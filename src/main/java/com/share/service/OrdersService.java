@@ -10,5 +10,5 @@ public interface OrdersService {
 
     public int insertOrdersByUserName(Orders orders);
 
-//    public int insertOrder (Orders orders);
+    public int updateOrder(Orders orders);
 }
