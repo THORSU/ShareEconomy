@@ -60,8 +60,8 @@ function Paying() {
                             console.log(msg);
                             Deduct(msg);
                             if (msg == "insert successful!") {
-                                alert("插入成功")
-                                window.location.href = 'SuccessPay.html';
+                                alert("订单生产！")
+                                window.location.href = 'FirstPage.html';
                             }
                             else {
                                 alert("insert fail!")
