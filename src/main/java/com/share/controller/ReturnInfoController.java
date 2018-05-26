@@ -36,15 +36,21 @@ public class ReturnInfoController {
      * @param response
      * @return
      */
-    @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public
     @ResponseBody
     Object GetOInfo(HttpServletRequest request, HttpServletResponse response){
-        String objectId = request.getParameter("id").trim();
+        String objectId = request.getParameter("objectId").trim();
         String SubObjectCode = request.getParameter("subObjectCode").trim();
         SubObjectInfoPo subObjectInfoPo = new SubObjectInfoPo();
         subObjectInfoPo.setCode(SubObjectCode);
         subObjectInfoPo.setObjectId(Long.valueOf(objectId));
+        //主商品id加子商品Code加入cookie
+        Cookie cookie = new Cookie("objectId&subjectCode",objectId+"&"+SubObjectCode);
+        cookie.setPath("/");
+        cookie.setMaxAge(60*60*24);
+        response.addCookie(cookie);
+
         return objectInfoService.getSubObjectInfo(subObjectInfoPo);
     }
 

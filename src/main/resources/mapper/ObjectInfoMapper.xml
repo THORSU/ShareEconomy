@@ -9,7 +9,7 @@
     </sql>
 
     <select id="getSubObjectInfo" parameterType="com.share.pojo.po.SubObjectInfoPo" resultType="com.share.pojo.ObjectInfo">
-        select id,objectId,sub_code as code,password,condition,remark from objectTable
-        where objectId = #{objectId} and  sub_code = #{code};
+        select s.id,s.objectId,s.sub_code as code,s.password,s.condition,s.remark from objectTable s
+        where s.objectId = #{objectId} and  s.sub_code = #{code};
     </select>
 </mapper>
