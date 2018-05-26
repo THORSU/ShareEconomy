@@ -9,9 +9,11 @@ import java.util.List;
  */
 
 public interface ObjectService {
-    public int IncObj(Object_1 object);
+    int IncObj(Object_1 object);
 
-    public Object_1 ObjInfo(Object_1 object);
+    Object_1 ObjInfo(Object_1 object);
 
     String searchGoodsName(String context);
+
+    List<Object_1> getObjectInfo();
 }

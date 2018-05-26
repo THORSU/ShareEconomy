@@ -13,4 +13,6 @@ public interface ObjectMapper {
     public Object_1 ObjInfo(Object_1 object);
 
     List<Object_1> searchGoodsName(String context);
+
+    List<Object_1> getObjectInfo();
 }

@@ -14,8 +14,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="condition" column="condition"></result>
 	</resultMap>
 
-    <!-- 通过id查找用户 -->
-	<select id="CheckUname" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
+    <!-- 通过name查找用户 -->
+	<select id="CheckUname" parameterType="java.lang.String" resultMap="UserInfoResult">
 		select * from User where uname=#{uname}
 	</select>
 
@@ -62,8 +62,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="UpdateInfo" parameterType="com.share.pojo.User">
 		UPDATE User
 		<trim prefix="set" suffixOverrides=",">
-			<if test="alias!=null">alias=#{alias},</if>
-			<if test="upwd!=null">upwd=#{upwd},</if>
+			<if test="alias!=null and alias!=''">alias=#{alias},</if>
+			<if test="upwd!=null and upwd!=''">upwd=#{upwd},</if>
 		</trim>
 		WHERE uid=#{uid}
 	</update>
@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="reCharge" parameterType="com.share.pojo.User">
 		UPDATE User
 		<trim prefix="set" suffixOverrides=",">
-			<if test="wallet!=null">wallet=#{wallet},</if>
+			<if test="wallet!=null and wallet!=''">wallet=#{wallet},</if>
 		</trim>
 				WHERE uname=#{uname}
 	</update>

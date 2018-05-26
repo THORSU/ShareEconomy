@@ -1,11 +1,15 @@
 package com.share.service.impl;
 
+import com.share.controller.ReturnInfoController;
 import com.share.mapper.ObjectMapper;
 import com.share.pojo.Object_1;
 import com.share.service.ObjectService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +17,7 @@ import java.util.List;
  */
 @Service
 public class ObjectServiceimpl implements ObjectService {
+    private static Logger logger=Logger.getLogger(ReturnInfoController.class);
     @Autowired
     private ObjectMapper objectMapper;
     @Override
@@ -42,5 +47,20 @@ public class ObjectServiceimpl implements ObjectService {
         else {
             return "0";
         }
+    }
+
+    @Override
+    public List<Object_1> getObjectInfo() {
+        try {
+            List<Object_1> object_1List = objectMapper.getObjectInfo();
+            if (!CollectionUtils.isEmpty(object_1List)) {
+                return object_1List;
+            }else {
+                return new ArrayList<Object_1>();
+            }
+        }catch (Exception e){
+            logger.error("商品查询失败！");
+        }
+        return new ArrayList<>();
     }
 }

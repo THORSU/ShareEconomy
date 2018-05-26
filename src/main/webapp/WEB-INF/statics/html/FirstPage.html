@@ -15,6 +15,7 @@
 <!--</html>-->
 
 <script>
+    //获取登陆者昵称
     window.onload=function getname() {
         $.ajax({
             type:"post",
@@ -22,6 +23,21 @@
             success:function (msg) {
                 console.log(msg);
                 $("#asd").text(msg);
+            }
+        })
+    }
+
+</script>
+
+<script>
+    //动态获取所有商品信息
+    window.onload=function getObjectInfo() {
+        $.ajax({
+            type:"",
+            url:"ef/getObjectInfo.from",
+            success:function (msg) {
+//                console.log(msg);
+//                $("#asd").text(msg);
             }
         })
     }

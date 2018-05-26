@@ -3,6 +3,7 @@ package com.share.controller;
 import com.share.pojo.Object_1;
 import com.share.service.ObjectService;
 import org.apache.log4j.Logger;
+import java.lang.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by weixin on 17-8-14.
@@ -26,7 +28,7 @@ public class ReturnInfoController {
     @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public
     @ResponseBody
-    Object GetOInfo(HttpServletRequest request,HttpServletResponse response){
+    Object GetOInfo(HttpServletRequest request, HttpServletResponse response){
         String Oid=request.getParameter("Chioce").trim();
         object1=new Object_1();
 //        object1.setOid(Oid);
@@ -47,5 +49,13 @@ public class ReturnInfoController {
             return "0";
         }
         return null;
+    }
+
+
+    @RequestMapping(value = "/getObjectInfo.from",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    public
+    @ResponseBody
+    List<Object_1> getObjectInfo(HttpServletRequest request, HttpServletResponse response){
+        return objectService.getObjectInfo();
     }
 }
