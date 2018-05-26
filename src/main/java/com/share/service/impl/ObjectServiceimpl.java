@@ -35,7 +35,6 @@ public class ObjectServiceimpl implements ObjectService {
 
 
         List<Object_1> res = objectMapper.searchGoodsName(context);
-
         if(res.size()!=0){
             StringBuffer temp = new StringBuffer();
             for (int i=0;i<res.size();i++){

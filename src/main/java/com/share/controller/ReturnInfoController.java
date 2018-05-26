@@ -1,6 +1,9 @@
 package com.share.controller;
 
+import com.share.pojo.ObjectInfo;
 import com.share.pojo.Object_1;
+import com.share.pojo.po.SubObjectInfoPo;
+import com.share.service.ObjectInfoService;
 import com.share.service.ObjectService;
 import org.apache.log4j.Logger;
 import java.lang.Object;
@@ -24,34 +27,33 @@ public class ReturnInfoController {
     private static Logger logger=Logger.getLogger(ReturnInfoController.class);
     @Autowired
     private ObjectService objectService;
-    private Object_1 object1;
+    @Autowired
+    private ObjectInfoService objectInfoService;
+
+    /**
+     * 返回子商品信息
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public
     @ResponseBody
     Object GetOInfo(HttpServletRequest request, HttpServletResponse response){
-        String Oid=request.getParameter("Chioce").trim();
-        object1=new Object_1();
-//        object1.setOid(Oid);
-        Object_1 res=objectService.ObjInfo(object1);
-
-
-        if(res!=null){
-            Cookie cookie4=new Cookie("Obill",res.getPrice());//make the price of this.id as one of the cookies.
-            cookie4.setPath("/");
-            cookie4.setMaxAge(60*60*24);
-            response.addCookie(cookie4);
-
-            logger.info(res);
-//            return res.getPwd();
-        }
-        else {
-            logger.error(res);
-            return "0";
-        }
-        return null;
+        String objectId = request.getParameter("id").trim();
+        String SubObjectCode = request.getParameter("subObjectCode").trim();
+        SubObjectInfoPo subObjectInfoPo = new SubObjectInfoPo();
+        subObjectInfoPo.setCode(SubObjectCode);
+        subObjectInfoPo.setObjectId(Long.valueOf(objectId));
+        return objectInfoService.getSubObjectInfo(subObjectInfoPo);
     }
 
-
+    /**
+     * 首页返回所有商品信息
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "/getObjectInfo.from",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
     public
     @ResponseBody

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.share.mapper.ObjectInfoMapper">
+
+    <sql id="selectAllInfo">
+        select id,objectId,sub_code as code,password,condition,remark
+    </sql>
+
+    <select id="getSubObjectInfo" parameterType="com.share.pojo.po.SubObjectInfoPo" resultType="com.share.pojo.ObjectInfo">
+        select id,objectId,sub_code as code,password,condition,remark from objectTable
+        where objectId = #{objectId} and  sub_code = #{code};
+    </select>
+</mapper>
