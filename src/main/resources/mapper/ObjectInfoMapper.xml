@@ -12,4 +12,8 @@
         select s.id,s.objectId,s.sub_code as code,s.password,s.condition,s.remark from objectTable s
         where s.objectId = #{objectId} and  s.sub_code = #{code};
     </select>
+
+    <select id="getSubObjectCode" parameterType="java.lang.Long" resultType="java.lang.String">
+        select s.sub_code from objectTable s where s.id = #{id};
+    </select>
 </mapper>

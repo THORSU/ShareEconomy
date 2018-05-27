@@ -5,6 +5,7 @@ import com.share.pojo.Object_1;
 import com.share.pojo.po.SubObjectInfoPo;
 import com.share.service.ObjectInfoService;
 import com.share.service.ObjectService;
+import com.share.util.DatetimeUtil;
 import org.apache.log4j.Logger;
 import java.lang.Object;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by weixin on 17-8-14.
@@ -45,13 +47,15 @@ public class ReturnInfoController {
         SubObjectInfoPo subObjectInfoPo = new SubObjectInfoPo();
         subObjectInfoPo.setCode(SubObjectCode);
         subObjectInfoPo.setObjectId(Long.valueOf(objectId));
-        //主商品id加子商品Code加入cookie
-        Cookie cookie = new Cookie("objectId&subjectCode",objectId+"&"+SubObjectCode);
-        cookie.setPath("/");
-        cookie.setMaxAge(60*60*24);
-        response.addCookie(cookie);
-
-        return objectInfoService.getSubObjectInfo(subObjectInfoPo);
+        ObjectInfo objectInfo = objectInfoService.getSubObjectInfo(subObjectInfoPo);
+        if (!Objects.isNull(objectInfo)){
+            //主商品id加子商品Code加入cookie
+            Cookie cookie = new Cookie("objectId&subObjectId&startTime",objectId+"&"+objectInfo.getId()+"&"+ DatetimeUtil.currentDate("HH:mm:ss"));
+            cookie.setPath("/");
+            cookie.setMaxAge(60*60*24);
+            response.addCookie(cookie);
+        }
+        return objectInfo;
     }
 
     /**

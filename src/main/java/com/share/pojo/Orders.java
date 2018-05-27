@@ -15,6 +15,16 @@ public class Orders {
 
     private Long subObjectId;//'商品子表id'
 
+    public String getSubObjectCode() {
+        return subObjectCode;
+    }
+
+    public void setSubObjectCode(String subObjectCode) {
+        this.subObjectCode = subObjectCode;
+    }
+
+    private String subObjectCode;//子商品code
+
     private String orderCode;//'订单号'
 
     public String getOrderCode() {

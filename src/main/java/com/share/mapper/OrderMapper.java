@@ -9,8 +9,10 @@ public interface OrderMapper {
 
     List<Orders> getOrdersByUserName(@Param("username") String uesrname);
 
-    public int insertOrdersByUserName(Orders orders);
+    int insertOrdersByUserName(Orders orders);
 
-    public int updateOrder(Orders orders);
+    int updateOrder(Orders orders);
+
+
 
 }

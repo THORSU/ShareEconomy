@@ -60,7 +60,7 @@ function Paying() {
                             console.log(msg);
                             Deduct(msg);
                             if (msg == "insert successful!") {
-                                alert("订单生产！")
+                                alert("使用记录已生产，可到订单查看！")
                                 window.location.href = 'FirstPage.html';
                             }
                             else {

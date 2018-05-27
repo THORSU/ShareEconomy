@@ -26,13 +26,13 @@ public class MloginController {
      */
     @Autowired
     private ManagerService managerService;
-    private Manager manager;
+
     @RequestMapping(value = "/Mlogin.from",method = RequestMethod.POST,produces = "application/json; charset=utf-8")
     public @ResponseBody
     Object GetManager(HttpServletRequest request,HttpServletResponse response ){
         String mname=request.getParameter("Mname").trim();
         String mpwd=request.getParameter("Mpwd").trim();
-        manager=new Manager();
+        Manager manager=new Manager();
         manager.setMname(mname);
         manager.setMpassword(mpwd);
         Manager res=managerService.Mlogin(manager);

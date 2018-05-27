@@ -2,6 +2,7 @@ package com.share.mapper;
 
 import com.share.pojo.ObjectInfo;
 import com.share.pojo.po.SubObjectInfoPo;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by sweeney on 2018/5/26.
@@ -14,4 +15,11 @@ public interface ObjectInfoMapper {
      * @return
      */
     ObjectInfo getSubObjectInfo(SubObjectInfoPo subObjectInfoPo);
+
+    /**
+     * 根据子商品id获取code
+     * @param SubObjectId
+     * @return
+     */
+    String getSubObjectCode (@Param("id") Long SubObjectId);
 }
