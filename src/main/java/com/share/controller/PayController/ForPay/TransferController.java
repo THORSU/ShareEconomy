@@ -29,10 +29,6 @@ public class TransferController{
 
 //        logger.info(time+"-----------------------------------------");
         final Cookie[] oCookies = request.getCookies();
-//        ExecutorService pool = Executors.newCachedThreadPool();
-//
-//        pool.submit(new ExcecutePay(time,oCookies));
-//        pool.shutdown();
 
         new Thread(new ExcecutePay(time,oCookies)).run();
 

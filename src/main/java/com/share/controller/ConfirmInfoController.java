@@ -16,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * Created by weixin on 17-9-26.
+ * 获取名字
  */
 @Controller
 @RequestMapping("/ef")

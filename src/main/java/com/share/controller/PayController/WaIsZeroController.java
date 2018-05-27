@@ -40,7 +40,7 @@ public class WaIsZeroController {
                     logger.info(cookie.getValue());
                 }
             }
-            User res1 = userService.CheckUname(user);
+            User res1 = userService.CheckUname(user.getUname());
             if (res1.getWallet()> 0) {
                 logger.info(res1+"000");
                 return res1.getWallet();

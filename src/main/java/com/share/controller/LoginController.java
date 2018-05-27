@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/cd")//mapping
 public class LoginController {
+    private final static String CONDITION_TRUE = "0";
     private static Logger log=Logger.getLogger(LoginController.class);
     @Autowired
     private UserService userService;
@@ -35,30 +36,35 @@ public class LoginController {
         user.setUname(username);//set the values
         user.setUpwd(password);
         User res = userService.login(user);
-
-
         if (res != null) {
-            if (res.getCondition().equals("0")) {//change the condition
+            if (res.getCondition().equals(CONDITION_TRUE)) {//change the condition
                     res.setCondition("1");
                     int rescount = userService.loginChangeCon(res);
                     Cookie cookie = new Cookie("ssid", res.getUid());//save the cookie.
                     Cookie cookie1 = new Cookie("ssname", res.getUname());
                     Cookie cookie2 = new Cookie("ssaccount", res.getWallet() + "");
+                    Cookie cookie3 = new Cookie("sscondition",res.getCondition() + "");
                     cookie.setPath("/");//the root directory
                     cookie1.setPath("/");
                     cookie2.setPath("/");
+                    cookie3.setPath("/");
                     cookie.setMaxAge(60 * 60 * 24);
                     cookie1.setMaxAge(60 * 60 * 24);
                     cookie2.setMaxAge(60 * 60 * 24);
+                    cookie3.setMaxAge(60*60*24);
                     response.addCookie(cookie);
                     response.addCookie(cookie1);
                     response.addCookie(cookie2);
-                    log.info(res.toString());
+                    response.addCookie(cookie3);
+                    log.info(res.toString()+"登陆成功");
                     return "1";
+                } else {
+                log.info("该用户已经登录");
+                return "2";}
 
-                } else {return "2";}
-
-            } else {return "0";}
+            } else {
+            log.error("用户名或密码错误");
+            return "0";}
         }
     }
 

@@ -26,7 +26,6 @@ public class logoutController {
     @RequestMapping(value = "/logout.from", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public @ResponseBody
     int logout(HttpServletRequest request, HttpServletResponse response) {
-
         final Cookie[] oCookies = request.getCookies();
         if (oCookies != null) {
             for (final Cookie oItem : oCookies) {
@@ -41,7 +40,6 @@ public class logoutController {
                 }
             }
         }
-
         return 1;
     }
 }
