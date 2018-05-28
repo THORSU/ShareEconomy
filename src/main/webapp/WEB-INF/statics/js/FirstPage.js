@@ -1,6 +1,19 @@
 function getSelectValue(){
-    var demo=$("#select").val();//返回选择项目的信息
-    console.log(demo);
+    var demo = $("#select").val();
+    var subCode = "";
+    var strcookie = document.cookie;
+    alert(strcookie);
+    var cookies = strcookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+        var msg1 = cookies[i].split("=");
+        if (msg1[0] === "msg") {
+            alert(msg1[1]);
+            subCode = msg1[1];
+            break;
+        }
+    }
+    //返回选择项目的信息
+    console.log(demo + subCode);
     $.ajax({
         type:"post",
         url:"/cd/ObjInfo.from?Chioce="+demo.trim(),
@@ -27,8 +40,16 @@ function WaIsZero(){
                 case 0:
                     alert("余额不足");
                     break;
-                default:getSelectValue();
+                default:
+                    getSelectValue();
             }
         }
     })
 }
+
+function haveAtry(msg) {
+    console.log(msg);
+    document.cookie = "msg=" + msg;
+    window.location.href = "bike.html";
+}
+
