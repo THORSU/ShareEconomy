@@ -57,11 +57,11 @@ public class OrdersServiceimpl implements OrdersService {
                 if ("ssname".equals(cookie.getName())) {
                     uesrname = cookie.getValue();
                 }
-                if ("objectId&subObjectCode&startTime".equals(cookie.getName())){
-                    String[]  strings = cookie.getName().split("&");
-                    objectId = strings[1];
-                    subObjectId = strings[2];
-                    startTime = strings[3];
+                if ("objectId&subObjectId&startTime".equals(cookie.getName())){
+                    String[]  strings = cookie.getValue().split("&");
+                    objectId = strings[0];
+                    subObjectId = strings[1];
+                    startTime = strings[2];
                 }
             }
         }
@@ -72,7 +72,7 @@ public class OrdersServiceimpl implements OrdersService {
             orders.setObjectId(Long.valueOf(objectId));
             orders.setSubObjectId(Long.valueOf(subObjectId));
         }
-        orders.setBill(BigDecimal.valueOf(Long.parseLong(bill)));
+        orders.setBill(Double.valueOf(bill));
         orders.setOrderCode(Long.toString(System.currentTimeMillis()));
         orders.setPeriod(period);
         orders.setStartTime(startTime);

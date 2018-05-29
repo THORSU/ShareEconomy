@@ -29,4 +29,9 @@
     <select id="getObjectInfo" resultMap="ObjectInfo">
         select * from Objects;
     </select>
+
+    <select id="getInfoByObjectId" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
+        select id,object_code as code,merchant_name as merchantName,object_name as name,object_price as price,object_status as goodsState,
+         object_remark as remark from Objects where id=#{objectId};
+    </select>
     </mapper>

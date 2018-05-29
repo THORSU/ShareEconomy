@@ -62,4 +62,14 @@ public class ObjectServiceimpl implements ObjectService {
         }
         return new ArrayList<>();
     }
+
+    @Override
+    public Object_1 getInfoByObjectId(String objectId) {
+        try {
+            return objectMapper.getInfoByObjectId(objectId);
+        }catch (Exception e){
+            logger.error("查询失败！");
+        }
+        return null;
+    }
 }

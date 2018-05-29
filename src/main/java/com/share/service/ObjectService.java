@@ -16,4 +16,6 @@ public interface ObjectService {
     String searchGoodsName(String context);
 
     List<Object_1> getObjectInfo();
+
+    Object_1 getInfoByObjectId(String objectId);
 }

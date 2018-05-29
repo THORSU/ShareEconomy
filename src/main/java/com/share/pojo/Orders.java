@@ -35,7 +35,7 @@ public class Orders {
         this.orderCode = orderCode;
     }
 
-    private BigDecimal bill;//'消费金额'
+    private Double bill;//'消费金额'
 
     private String period;//'使用时间'
 
@@ -100,11 +100,11 @@ public class Orders {
 
 
 
-    public BigDecimal getBill() {
+    public Double getBill() {
         return bill;
     }
 
-    public void setBill(BigDecimal bill) {
+    public void setBill(Double bill) {
         this.bill = bill;
     }
 

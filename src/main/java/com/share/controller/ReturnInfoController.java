@@ -32,13 +32,15 @@ public class ReturnInfoController {
     @Autowired
     private ObjectInfoService objectInfoService;
 
+    private Object_1 object_1;
+
     /**
      * 返回子商品信息
      * @param request
      * @param response
      * @return
      */
-    @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/ObjInfo.from",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public
     @ResponseBody
     Object GetOInfo(HttpServletRequest request, HttpServletResponse response){
@@ -49,13 +51,22 @@ public class ReturnInfoController {
         subObjectInfoPo.setObjectId(Long.valueOf(objectId));
         ObjectInfo objectInfo = objectInfoService.getSubObjectInfo(subObjectInfoPo);
         if (!Objects.isNull(objectInfo)){
+            object_1 = objectService.getInfoByObjectId(objectId);
+            if (!Objects.isNull(object_1)){
+                Cookie cookie = new Cookie("Obill",object_1.getPrice());
+                cookie.setPath("/");
+                cookie.setMaxAge(60*60*24);
+                response.addCookie(cookie);
+            }
             //主商品id加子商品Code加入cookie
             Cookie cookie = new Cookie("objectId&subObjectId&startTime",objectId+"&"+objectInfo.getId()+"&"+ DatetimeUtil.currentDate("HH:mm:ss"));
             cookie.setPath("/");
             cookie.setMaxAge(60*60*24);
             response.addCookie(cookie);
+            return objectInfo.getPassword();
+        }else {
+            return "null";
         }
-        return objectInfo;
     }
 
     /**
