@@ -4,14 +4,16 @@ function getSelectValue(){
     var strcookie = document.cookie;
     alert(strcookie);
     var cookies = strcookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-        var msg1 = cookies[i].split("=");
-        if (msg1[0] === "msg") {
-            alert(msg1[1]);
-            subCode = msg1[1];
-            break;
-        }
+        for (var i = 0; i < cookies.length; i++) {
+                var msg1 = cookies[i].split("=");
+                console.log(msg1[1]);
+                if (msg1[0] === " msg") {
+                    alert(msg1[1]);
+                    subCode = msg1[1];
+                    break;
+                }
     }
+
     //返回选择项目的信息
     console.log(demo + subCode);
     $.ajax({
@@ -49,7 +51,7 @@ function WaIsZero(){
 
 function haveAtry(msg) {
     console.log(msg);
-    document.cookie = "msg=" + msg;
+    document.cookie = "msg=" + msg + ";path = /";
     window.location.href = "bike.html";
 }
 
