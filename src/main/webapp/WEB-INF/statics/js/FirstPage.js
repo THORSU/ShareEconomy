@@ -21,7 +21,7 @@ function getSelectValue(){
     var subObjectCode = $("#select").val();
     var objectId = "";
     var strcookie = document.cookie;
-    alert(strcookie);
+    // alert(strcookie);
     var cookies = strcookie.split(";");
     for (var i = 0; i < cookies.length; i++) {
         var msg1 = cookies[i].split("=");
@@ -55,6 +55,7 @@ function getSelectValue(){
 function haveAtry(msg) {
     console.log(msg);
     document.cookie = "msg=" + msg + ";path = /";
+    // alert(document.cookie);
     window.location.href = "bike.html";
 }
 
