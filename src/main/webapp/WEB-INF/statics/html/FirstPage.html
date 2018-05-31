@@ -14,35 +14,6 @@
 <!--</body>-->
 <!--</html>-->
 
-<script>
-    //获取登陆者昵称
-    window.onload=function getname() {
-        $.ajax({
-            type:"post",
-            url:"ef/getname.from",
-            success:function (msg) {
-                console.log(msg);
-                $("#asd").text(msg);
-            }
-        })
-    }
-
-</script>
-
-<script>
-    //动态获取所有商品信息
-    window.onload=function getObjectInfo() {
-        $.ajax({
-            type:"",
-            url:"ef/getObjectInfo.from",
-            success:function (msg) {
-//                console.log(msg);
-//                $("#asd").text(msg);
-            }
-        })
-    }
-
-</script>
 <body>
 <nav id="my_nav" class="navbar navbar-default" role="navigation">
     <div id="my_nav_div" class="navbar-header">
@@ -108,7 +79,7 @@
                 <div style="text-align:center;">
                     <div id="my_thum" class="thumbnail"  >
                         <img src="../img/1.jpg" onclick="haveAtry(1000)" alt="通用的占位符缩略图">
-                        </a>
+
                         <div class="caption">
                             <p style="font-size:10px;">share bikes</p>
                             <p>
@@ -117,7 +88,7 @@
                     </div>
                     <div class="thumbnail">
                         <img src="../img/bed.jpg" onclick="haveAtry(1003)" alt="通用的占位符缩略图">
-                        </a>
+
                         <div class="caption">
                             <p style="font-size:10px;">share rests</p>
                             <p>
@@ -182,6 +153,6 @@
 
 <script type="text/javascript" src="../js/FirstPage.js">
 
+
 </script>
-</body>
 </html>

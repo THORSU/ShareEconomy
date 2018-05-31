@@ -59,3 +59,27 @@ function haveAtry(msg) {
     window.location.href = "bike.html";
 }
 
+
+//获取登陆者昵称
+document.ready = function getname() {
+    $.ajax({
+        type:"get",
+        url:"/ef/getname.from",
+        success:function (msg) {
+            console.log(msg);
+            $("#asd").text(msg);
+        }
+    })
+};
+
+//动态获取所有商品信息
+window.onload=function getObjectInfo() {
+        $.ajax({
+            type:"",
+            url:"/ef/getObjectInfo.from",
+            success:function (msg) {
+//                console.log(msg);
+//                $("#asd").text(msg);
+            }
+        })
+    };

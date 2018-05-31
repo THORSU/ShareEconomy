@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * Created by weixin on 17-8-16.
@@ -41,7 +42,9 @@ public class RechargeController {
             for(final Cookie oItem1:oCookies) {//recharge
                 final String sAccount = oItem1.getName();
                 if (sAccount.equals("ssaccount")) {
-                    user.setWallet(Double.parseDouble(oItem1.getValue()) +Double.parseDouble(account));
+                    Double wallet = Double.parseDouble(oItem1.getValue()) +Double.parseDouble(account);
+                    user.setWallet(wallet);
+                    oItem1.setValue(wallet.toString());
                     double res = userService.reCharge(user);
                     if (res == 1) {
                         logger.info(res);
@@ -53,6 +56,32 @@ public class RechargeController {
                 }
             }
             }
+        else {
+            return "0";
+        }
+        return "0";
+    }
+
+
+    @RequestMapping(value = "/confirmPwd.from", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    public
+    @ResponseBody
+    Object confirmPwd(HttpServletRequest request, HttpServletResponse response) {
+        String pwd = request.getParameter("confirmPwd").trim();
+        final Cookie[] oCookies = request.getCookies();
+        if (oCookies != null) {
+            for (final Cookie oItem : oCookies) {
+                final String sName = oItem.getName();
+                if (sName.equals("ssname")) {
+                    User user = userService.CheckUname(oItem.getValue());
+                    if (!Objects.isNull(user)){
+                        if (pwd.equals(user.getUpwd().substring(0,6))){
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
         else {
             return "0";
         }

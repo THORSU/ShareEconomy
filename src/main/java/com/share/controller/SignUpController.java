@@ -1,11 +1,13 @@
 package com.share.controller;
 
 import com.share.pojo.User;
+import com.share.service.UserForRedisService;
 import com.share.service.UserService;
 import com.share.util.RandomAccessUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * Created by weixin on 17-7-31.
@@ -24,6 +27,8 @@ public class SignUpController {
     private static Logger logger = Logger.getLogger(SignUpController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserForRedisService userForRedisService;
     private User user;
 
     @RequestMapping(value = "/SignUp.from", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
@@ -63,10 +68,15 @@ public class SignUpController {
     Object checkUname(HttpServletRequest request, HttpServletResponse response) {
         String uName = request.getParameter("username").trim();
         if (StringUtils.isNoneBlank(uName)){
-            User userResult = userService.CheckUname(uName);
-            if (userResult!=null){
-                return "1";
+            User user = userForRedisService.findUserInfo(uName);//redis先查询
+            if (Objects.isNull(user)){
+                User userResult = userService.CheckUname(uName);
+                if (userResult!=null){
+                    return "1";
+                }
             }
+            else {return "1";}
+
         }
         return null;
     }

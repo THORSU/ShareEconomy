@@ -23,15 +23,18 @@
                 $.each(msg, function (index, value) {
                     console.log(index);
                     console.log(value);
+                    var price = value.price;
                     var bill = value.bill;
                     var period = value.period;
                     var orderCode = value.orderCode;
+                    var objectName = value.objectName;
                     console.log(bill);
-                    $("#price").append(bill);
+                    $("#price").append(price);
                     $("#amount").append(bill);
                     $("#code").append(orderCode);
                     $("#time").append(period);
                     $("#fact").append(bill);
+                    $("#objectName").append(objectName);
                 })
 
             }
@@ -64,9 +67,9 @@
 </div>
 <div class="c-comment-list" style="border: 0;">
     <a class="o-con" href="">
-        <div class="o-con-img"><img src="../img/bike.jpg" height="551" width="800"/></div>
+        <div class="o-con-img"><img src="../img/3.jpg" height="375" width="500"/></div>
         <div class="o-con-txt">
-            <p>Bike</p>
+            <p id="objectName"></p>
             <!--<p class="price">单价：￥<label id="price"></label></p>-->
             <p>单价：<span>￥<label id="price"></label></span></p>
             <p>合计：<span>￥<label id="amount"></label></span></p>

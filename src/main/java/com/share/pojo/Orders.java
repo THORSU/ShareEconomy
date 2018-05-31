@@ -11,7 +11,17 @@ public class Orders {
 
     private String userName;//'用户名（手机号)'
 
+    private String objectName;
+
     private Long objectId;//'商品主表对应id'
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 
     private Long subObjectId;//'商品子表id'
 
@@ -50,6 +60,16 @@ public class Orders {
     }
 
     private String endTime;//'使用结束时间'
+
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {

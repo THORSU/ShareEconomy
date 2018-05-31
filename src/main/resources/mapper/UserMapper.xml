@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getName" parameterType="com.share.pojo.User" resultMap="UserInfoResult">
-		SELECT * from User where uid=#{uid}
+		SELECT * from User where uname=#{uname}
 	</select>
 
 
@@ -65,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="alias!=null and alias!=''">alias=#{alias},</if>
 			<if test="upwd!=null and upwd!=''">upwd=#{upwd},</if>
 		</trim>
-		WHERE uid=#{uid}
+		WHERE uname=#{uname}
 	</update>
 
 	<update id="reCharge" parameterType="com.share.pojo.User">

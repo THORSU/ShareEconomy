@@ -1,7 +1,9 @@
 package com.share.service.impl;
 
 import com.share.mapper.ObjectInfoMapper;
+import com.share.mapper.ObjectMapper;
 import com.share.mapper.OrderMapper;
+import com.share.pojo.Object_1;
 import com.share.pojo.Orders;
 import com.share.service.OrdersService;
 import com.share.util.DatetimeUtil;
@@ -15,6 +17,7 @@ import org.springframework.util.CollectionUtils;
 import javax.servlet.http.Cookie;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -25,6 +28,8 @@ public class OrdersServiceimpl implements OrdersService {
     private OrderMapper orderMapper;
     @Autowired
     private ObjectInfoMapper objectInfoMapper;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Override
     public List<Orders> getOrdersByUserName(String username) {
@@ -34,6 +39,11 @@ public class OrdersServiceimpl implements OrdersService {
             if (!CollectionUtils.isEmpty(ordersList)){
                 ordersList.forEach(item->{
                     String subCode = objectInfoMapper.getSubObjectCode(item.getSubObjectId());
+                    Object_1 object_1 = objectMapper.getInfoByObjectId(item.getObjectId().toString());
+                    if (!Objects.isNull(object_1)){
+                        item.setPrice(object_1.getPrice());
+                        item.setObjectName(object_1.getName());
+                    }
                     if (StringUtils.isNotBlank(subCode)){
                         item.setSubObjectCode(subCode);
                     }
