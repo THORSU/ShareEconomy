@@ -40,14 +40,14 @@ public class SearchObjectController {
             client.addTransportAddress(new InetSocketTransportAddress("101.132.64.173",9300));
             //模糊查询
             SearchRequestBuilder responseBuilder = client.prepareSearch("share").setTypes("objects");
-            SearchResponse res = responseBuilder.setQuery(QueryBuilders.wildcardQuery("name", "*" + GoodsName.toLowerCase() + "*"))
+            SearchResponse res = responseBuilder.setQuery(QueryBuilders.wildcardQuery("objectName", "*" + GoodsName.toLowerCase() + "*"))
                     .setFrom(0).setSize(10).setExplain(true).execute().actionGet();
             //查询结果
             SearchHits hits=res.getHits();
             String n="";
             if (hits.totalHits()>0){
                 for (int i=0;i<hits.totalHits();i++){
-                    n += (hits.getAt(i).getSource().get("name").toString() + ",");
+                    n += (hits.getAt(i).getSource().get("objectName").toString() + ",");
                 }
                 System.out.println(n);
                 return n;
