@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface OrderMapper {
 
-    List<Orders> getOrdersByUserName(@Param("userName") String username);
+    List<Orders> getOrdersByUserName(@Param("username") String uesrname);
 
-    List<Orders> insertOrdersByuserName(@Param("userName") String username);
+    public int insertOrdersByUserName(Orders orders);
+
+    public int updateOrder(Orders orders);
+
 }

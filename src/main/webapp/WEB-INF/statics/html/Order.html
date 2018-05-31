@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>订单</title>
+    <meta name="description" content="订单"/>
+    <meta name="keywords" content="订单"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="../css/amazeui.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/amazeui.min.js"></script>
+    <script src="../js/jquery.mins.js"></script>
+
+</head>
+<script>
+    window.onload = function getOrders() {
+        $.ajax({
+            type: "post",
+            url: "order/getOrders.form",
+            success: function (msg) {
+                console.log(msg);
+//                $("#code").text(msg[0].);
+                $.each(msg, function (index, value) {
+                    console.log(index);
+                    console.log(value);
+                    var bill = value.bill;
+                    var period = value.period;
+                    var orderCode = value.orderCode;
+                    console.log(bill);
+                    $("#price").append(bill);
+                    $("#amount").append(bill);
+                    $("#code").append(orderCode);
+                    $("#time").append(period);
+                    $("#fact").append(bill);
+                })
+
+            }
+        })
+    }
+
+</script>
+<body>
+<header data-am-widget="header" class="am-header am-header-default header">
+    <div class="am-header-left am-header-nav">
+        <a href="#left-link" class="">
+            <i class="am-header-icon am-icon-angle-left"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title"><a href="#title-link" class="" style="color: #333;">全部订单</a></h1>
+    <div class="am-header-right am-header-nav">
+        <a href="#right-link" class=""> </a>
+    </div>
+</header>
+<div class="cate-search" style="position: relative; top: 0; border-bottom: 0;">
+    <input type="text" class="cate-input" placeholder="">
+    <input type="button" class="cate-btn">
+</div>
+<ul class="order-style">
+    <li class="current"><a href="allorder.html">全部</a></li>
+</ul>
+<div class="c-comment">
+    <span class="c-comment-num">订单编号：<label id="code"></label></span>
+    <span class="c-comment-suc">以归还</span>
+</div>
+<div class="c-comment-list" style="border: 0;">
+    <a class="o-con" href="">
+        <div class="o-con-img"><img src="../img/bike.jpg" height="551" width="800"/></div>
+        <div class="o-con-txt">
+            <p>Bike</p>
+            <!--<p class="price">单价：￥<label id="price"></label></p>-->
+            <p>单价：<span>￥<label id="price"></label></span></p>
+            <p>合计：<span>￥<label id="amount"></label></span></p>
+        </div>
+        <div class="o-con-much" i><h4><label id="time"></label></label></h4></div>
+    </a>
+    <div class="c-com-money">实付金额：<span>￥<label id="fact"></label></span></div>
+</div>
+<div class="c-com-btn">
+    <a href="FirstPage.html">返回</a>
+</div>
+</body>
+</html>
