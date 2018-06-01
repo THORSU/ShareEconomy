@@ -1,32 +1,19 @@
 package com.share.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by weixin on 17-8-6.
  */
-public class Object_1 {
+public class Object_1 implements Serializable {
+    //todo 此处设置了商品的id自增
     private String id;//产品id
+    private String objectCode;//商品编码
     private String merchantName;//商家名
-    private String code;//产品编码
-    private String name;//产品名称
-    private String price;//每小时计费
-    private String goodsState;//状态位
-    private String remark;//备注
-
-    public String getMerchantName() {
-        return merchantName;
-    }
-
-    public void setMerchantName(String merchantName) {
-        this.merchantName = merchantName;
-    }
-
-    public String getGoodsState() {
-        return goodsState;
-    }
-
-    public void setGoodsState(String goodsState) {
-        this.goodsState = goodsState;
-    }
+    private String objectName;//商品名称
+    private String objectPrice;//商品价格
+    private String objectStatus;//商品上下架状态（0:未上架 1:待审核）
+    private String objectRemark;//商品备注
 
     public String getId() {
         return id;
@@ -36,47 +23,52 @@ public class Object_1 {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getObjectCode() {
+        return objectCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setObjectCode(String objectCode) {
+        this.objectCode = objectCode;
     }
 
-    public String getName() {
-        return name;
+    public String getMerchantName() {
+        return merchantName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMerchantName(String merchantName) {
+        this.merchantName = merchantName;
     }
 
-    public String getPrice() {
-        return price;
+    public String getObjectName() {
+        return objectName;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getObjectPrice() {
+        return objectPrice;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setObjectPrice(String objectPrice) {
+        this.objectPrice = objectPrice;
     }
 
-    @Override
-    public String toString() {
-        return "Object_1{" +
-                "id='" + id + '\'' +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", price='" + price + '\'' +
-                ", remark='" + remark + '\'' +
-                '}';
+    public String getObjectStatus() {
+        return objectStatus;
+    }
+
+    public void setObjectStatus(String objectStatus) {
+        this.objectStatus = objectStatus;
+    }
+
+    public String getObjectRemark() {
+        return objectRemark;
+    }
+
+    public void setObjectRemark(String objectRemark) {
+        this.objectRemark = objectRemark;
     }
 }
 

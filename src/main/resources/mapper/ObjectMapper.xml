@@ -5,6 +5,7 @@
 <mapper namespace="com.share.mapper.ObjectMapper">
 
 
+
     <insert id="IncObj" parameterType="com.share.pojo.Object_1">
     INSERT into Objects(code,name,price,remark) values(#{code},#{name},#{price},#{remark});
     </insert>
@@ -15,5 +16,14 @@
 
     <select id="searchGoodsName" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
         select * from Objects where name like CONCAT('%',#{name},'%')
+    </select>
+
+    <select id="getObjectInfo" resultMap="ObjectInfo">
+        select * from Objects;
+    </select>
+
+    <select id="getInfoByObjectId" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
+        select id,object_code as objectCode,merchant_name as merchantName,object_name as objectName,object_price as objectPrice,object_status as objectStatus,
+         object_remark as objectRemark from Objects where id=#{objectId};
     </select>
     </mapper>

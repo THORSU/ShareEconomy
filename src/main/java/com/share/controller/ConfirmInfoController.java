@@ -16,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 
 /**
  * Created by weixin on 17-9-26.
+ * 获取名字
  */
 @Controller
 @RequestMapping("/ef")
@@ -24,7 +25,7 @@ public class ConfirmInfoController {
     @Autowired
     private UserService userService;
     private User user;
-    @RequestMapping(value = "/getname.from",method = RequestMethod.POST)
+    @RequestMapping(value = "/getname.from",method = RequestMethod.GET)
     public @ResponseBody
     Object GetInfo(HttpServletResponse response, HttpServletRequest request) throws UnsupportedEncodingException {
 
@@ -32,9 +33,9 @@ public class ConfirmInfoController {
         if(cookies!=null){
             for (final Cookie Item:cookies) {
                 final String sname=Item.getName();
-                if(sname.equals("ssid")){
+                if(sname.equals("ssname")){
                     user=new User();
-                    user.setUid(Item.getValue());
+                    user.setUname(Item.getValue());
                     User res=userService.getName(user);
                     logger.info(res.getAlias());
 //                    String tem = new String(res.getAlias().getBytes("UTF-8"),"ISO-8859-1");

@@ -9,7 +9,7 @@ function Recharge() {
             var con;
             con = confirm("充值成功");
             if (con == true) {
-                window.location.href='logout.html';
+                window.location.href='FirstPage.html';
             }
         }
     })

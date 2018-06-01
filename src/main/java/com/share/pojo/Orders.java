@@ -11,9 +11,29 @@ public class Orders {
 
     private String userName;//'用户名（手机号)'
 
+    private String objectName;
+
     private Long objectId;//'商品主表对应id'
 
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
+
     private Long subObjectId;//'商品子表id'
+
+    public String getSubObjectCode() {
+        return subObjectCode;
+    }
+
+    public void setSubObjectCode(String subObjectCode) {
+        this.subObjectCode = subObjectCode;
+    }
+
+    private String subObjectCode;//子商品code
 
     private String orderCode;//'订单号'
 
@@ -25,7 +45,7 @@ public class Orders {
         this.orderCode = orderCode;
     }
 
-    private BigDecimal bill;//'消费金额'
+    private Double bill;//'消费金额'
 
     private String period;//'使用时间'
 
@@ -40,6 +60,16 @@ public class Orders {
     }
 
     private String endTime;//'使用结束时间'
+
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {
@@ -90,11 +120,11 @@ public class Orders {
 
 
 
-    public BigDecimal getBill() {
+    public Double getBill() {
         return bill;
     }
 
-    public void setBill(BigDecimal bill) {
+    public void setBill(Double bill) {
         this.bill = bill;
     }
 

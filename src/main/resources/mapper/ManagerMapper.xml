@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="Mlogin" parameterType="com.share.pojo.Manager" resultMap="ManagerInfoResult">
-        select * from Manager where mname=#{mname} and mpassword=#{mpassword}
+--         select * from Manager where mname=#{mname} and mpassword=#{mpassword}
     </select>
 
 </mapper>

@@ -55,15 +55,19 @@ function mimaInput() {
   var a6 = $("#input_f").val();
   var string=a1+a2+a3+a4+a5+a6;
 
-  // $.ajax({
-  //     type:"post",
-  //     url:"/ef/confirmPwd.from",
-  //     data:string,
-  //     datatype:"String",
-  //     success:function () {
-              Recharge();
-  //     }
-  // });
+  $.ajax({
+     type:"post",
+    url:"/ef/confirmPwd.from?confirmPwd="+string,
+      datatype:"html",
+      success:function (msg) {
+        if (msg == 1){
+          Recharge();
+        }
+        else {
+          alert("密码错误，请重新输入");
+        }
+      }
+  });
 
 }
 //清空input

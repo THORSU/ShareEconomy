@@ -2,6 +2,7 @@ package com.share.controller;
 
 import com.share.pojo.User;
 import com.share.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.javassist.compiler.MemberResolver;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,28 +39,14 @@ public class UpdateController {
             e.printStackTrace();
         }
         final Cookie[] oCookies = request.getCookies();
-        if (oCookies != null) {
-            for (final Cookie oItem : oCookies) {
-                final String sName = oItem.getName();
-                if (sName.equals("ssid")){
-                    user = new User();
-                    user.setUid(oItem.getValue());
-                    user.setUpwd(NewUpassword);
-                    user.setAlias(Aname);
-                    int res = userService.UpdateInfo(user);
+                    int res = userService.UpdateInfo(oCookies,NewUpassword,Aname);
                     if (res == 1) {
-                        logger.info(res);
+                        logger.info("修改成功");
                         return "1";
                     } else {
-                        logger.error(res);
+                        logger.error("修改失败");
                         return "0";
                     }
                 }
             }
-        }
-        else {
-            return "0";
-        }
-        return "0";
-    }
-}
+

@@ -31,11 +31,11 @@ public class IncObjectController {
 //        String Oamount=request.getParameter("Oamount").trim();
         String Oprice=request.getParameter("Oprice").trim();
         object=new Object_1();
-        object.setName(Oname);
-//        object.setAmount(Oamount);
-        object.setPrice(Oprice);
-        object.setCode("");
-        object.setRemark("");
+//        object.setName(Oname);
+////        object.setAmount(Oamount);
+//        object.setPrice(Oprice);
+//        object.setCode("");
+//        object.setRemark("");
 //        object.setCondition("0");
         int res=objectService.IncObj(object);
 
