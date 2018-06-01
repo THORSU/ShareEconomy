@@ -7,7 +7,6 @@ import com.share.service.ObjectInfoService;
 import com.share.service.ObjectService;
 import com.share.util.DatetimeUtil;
 import org.apache.log4j.Logger;
-import java.lang.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,7 +52,7 @@ public class ReturnInfoController {
         if (!Objects.isNull(objectInfo)){
             object_1 = objectService.getInfoByObjectId(objectId);
             if (!Objects.isNull(object_1)){
-                Cookie cookie = new Cookie("Obill",object_1.getPrice());
+                Cookie cookie = new Cookie("Obill", object_1.getObjectPrice());
                 cookie.setPath("/");
                 cookie.setMaxAge(60*60*24);
                 response.addCookie(cookie);

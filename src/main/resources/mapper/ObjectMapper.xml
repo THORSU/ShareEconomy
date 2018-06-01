@@ -3,15 +3,7 @@
                 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.share.mapper.ObjectMapper">
-    <resultMap id="ObjectInfo" type="com.share.pojo.Object_1">
-            <id column="id" property="id"/>
-            <result property="merchantName" column="merchant_name"/>
-            <result property="code" column="object_code"/>
-            <result property="name" column="object_name"/>
-            <result property="price" column="object_price"/>
-            <result property="goodsState" column="object_status"/>
-            <result property="remark" column="object_remark"/>
-    </resultMap>
+
 
 
     <insert id="IncObj" parameterType="com.share.pojo.Object_1">
@@ -31,7 +23,7 @@
     </select>
 
     <select id="getInfoByObjectId" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
-        select id,object_code as code,merchant_name as merchantName,object_name as name,object_price as price,object_status as goodsState,
-         object_remark as remark from Objects where id=#{objectId};
+        select id,object_code as objectCode,merchant_name as merchantName,object_name as objectName,object_price as objectPrice,object_status as objectStatus,
+         object_remark as objectRemark from Objects where id=#{objectId};
     </select>
     </mapper>

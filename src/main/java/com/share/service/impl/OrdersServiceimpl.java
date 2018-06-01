@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.servlet.http.Cookie;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,8 +40,8 @@ public class OrdersServiceimpl implements OrdersService {
                     String subCode = objectInfoMapper.getSubObjectCode(item.getSubObjectId());
                     Object_1 object_1 = objectMapper.getInfoByObjectId(item.getObjectId().toString());
                     if (!Objects.isNull(object_1)){
-                        item.setPrice(object_1.getPrice());
-                        item.setObjectName(object_1.getName());
+                        item.setPrice(object_1.getObjectPrice());
+                        item.setObjectName(object_1.getObjectName());
                     }
                     if (StringUtils.isNotBlank(subCode)){
                         item.setSubObjectCode(subCode);
