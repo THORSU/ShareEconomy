@@ -10,7 +10,7 @@ public class User {
     private String alias;
     private String umobile;
     private String IDnumber;
-    private double wallet;
+    private Double wallet;
     private String condition;
 
 
@@ -66,7 +66,7 @@ public class User {
         return wallet;
     }
 
-    public void setWallet(double wallet) {
+    public void setWallet(Double wallet) {
         this.wallet=wallet;
     }
 

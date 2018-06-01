@@ -1,6 +1,7 @@
 package com.share.controller.PayController;
 
 import com.share.pojo.User;
+import com.share.service.UserForRedisService;
 import com.share.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * Created by weixin on 17-9-7.
@@ -23,6 +25,8 @@ public class DedeuctController {
     private static final Logger logger=Logger.getLogger(DedeuctController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserForRedisService userForRedisService;
     private User user;
     @RequestMapping(value = "/deduct.from",method = RequestMethod.POST,produces ="application/json;charset=utf-8")
     public @ResponseBody
@@ -41,11 +45,20 @@ public class DedeuctController {
             for (final Cookie cookie1: cookies) {
                 final String sBill=cookie1.getName();
                 if(sBill.equals("ssaccount")) {
-                    double BILL = Double.parseDouble(cookie1.getValue()) - Double.parseDouble(bill);
+                    Double BILL = Double.parseDouble(cookie1.getValue()) - Double.parseDouble(bill);
                         user.setWallet(BILL);
                         int res = userService.Deduct(user);
                         if (res==1) {
+                            User userInfo = userForRedisService.findUserInfo(user.getUname());
+                            if (!Objects.isNull(userInfo)){
+                                userInfo.setWallet(BILL);
+                                userForRedisService.insertUserInfo(userInfo);
+                            }
                             logger.info(res);
+                            Cookie cookie = new Cookie("ssaccount",BILL.toString());
+                            cookie.setPath("/");
+                            cookie.setMaxAge(60*60*24);
+                            response.addCookie(cookie);
                             return "0";
                         } else {
                             logger.error(res);

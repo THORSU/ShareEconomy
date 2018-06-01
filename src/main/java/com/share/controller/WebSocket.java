@@ -1,10 +1,12 @@
 package com.share.controller;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.net.SyslogAppender;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -40,9 +42,23 @@ public class WebSocket {
         for(WebSocket item:webSocketSet){
             try {
                 item.sendMessage("我说："+message,session);
-                Scanner scanner=new Scanner(System.in);
-                String str=scanner.nextLine();
-                item.sendMessage("服务端："+str,session);
+                if (message.contains("你好")){
+                    item.sendMessage("服务端："+"你好",session);
+                }
+                else if (message.contains("坏")){
+                    item.sendMessage("服务端："+"物品编号发一下，谢谢",session);
+                }
+                else if (message.contains("商品")){
+                    item.sendMessage("服务端："+"若想了解商品信息，请到搜索页面或到首页进行查看",session);
+                }
+                else {
+                    item.sendMessage("服务端："+"具体细节请联系02210140228",session);
+                }
+//                Scanner scanner=new Scanner(System.in);
+//                while (scanner.hasNextLine()){
+//                   String str=scanner.nextLine();
+//                    item.sendMessage("服务端："+str,session);
+//                }
             } catch (IOException e) {
                 e.printStackTrace();
                 continue;
@@ -73,4 +89,5 @@ public class WebSocket {
     public static synchronized void addOnlineCount() {
         WebSocket.onlineCount++;
     }
+
 }
