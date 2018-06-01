@@ -26,9 +26,10 @@ function Deduct(msg) {
         dataType:"html",
         success:function (msg1){
             if(msg1=="0"){
-                window.location.href = 'SuccessPay.html';
+                // window.location.href = 'SuccessPay.html';
+                return "wellPay";
             }else {
-                alert("余额不足")
+                return "badPay";
             }
         }
     })
@@ -58,10 +59,12 @@ function Paying() {
                         dataType: "html",
                         success: function (msg) {
                             console.log(msg);
-                            Deduct(msg);
+                           var result = Deduct(bill);
                             if (msg == "insert successful!") {
-                                alert("使用记录已生产，可到订单查看！")
-                                window.location.href = 'FirstPage.html';
+
+                                    alert("使用记录已生产，可到订单查看！");
+                                    window.location.href = 'FirstPage.html';
+
                             }
                             else {
                                 alert("insert fail!")

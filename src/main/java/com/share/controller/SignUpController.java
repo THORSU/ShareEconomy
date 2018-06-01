@@ -44,7 +44,7 @@ public class SignUpController {
         user.setAlias("");
         user.setUmobile(username);
         user.setIDnumber("");
-        user.setWallet(0);
+        user.setWallet(0.0);
         user.setCondition(CONDITION_FALSE);
         int res = userService.SignUp(user);
         if (res == 1)

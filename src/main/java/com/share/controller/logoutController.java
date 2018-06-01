@@ -1,6 +1,7 @@
 package com.share.controller;
 
 import com.share.pojo.User;
+import com.share.service.UserForRedisService;
 import com.share.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * Created by weixin on 17-8-20.
@@ -23,6 +25,8 @@ public class logoutController {
     private Logger logger = Logger.getLogger(logoutController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserForRedisService userForRedisService;
 
     @RequestMapping(value = "/logout.from", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public @ResponseBody
@@ -36,7 +40,12 @@ public class logoutController {
                     if (StringUtils.isNotBlank(oItem.getValue())){
                         User res=userService.CheckUname(oItem.getValue());
                         res.setCondition("0");
-                        int rescount=  userService.loginChangeCon(res);
+                        userService.loginChangeCon(res);
+                        User userInfo = userForRedisService.findUserInfo(oItem.getValue());
+                        if (!Objects.isNull(userInfo)){
+                            userInfo.setCondition("0");
+                            userForRedisService.insertUserInfo(userInfo);
+                        }
                     }
                 }
             }

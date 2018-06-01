@@ -1,6 +1,7 @@
 package com.share.controller.PayController;
 
 import com.share.pojo.User;
+import com.share.service.UserForRedisService;
 import com.share.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class RechargeController {
     private static Logger logger = Logger.getLogger(RechargeController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserForRedisService userForRedisService;
     private User user;
 
     @RequestMapping(value = "/recharge.from", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
@@ -47,6 +50,15 @@ public class RechargeController {
                     oItem1.setValue(wallet.toString());
                     double res = userService.reCharge(user);
                     if (res == 1) {
+                        User userInfo = userForRedisService.findUserInfo(user.getUname());
+                        if (!Objects.isNull(userInfo)){
+                            userInfo.setWallet(wallet);
+                            userForRedisService.insertUserInfo(userInfo);
+                        }
+                        Cookie cookie = new Cookie("ssaccount",wallet.toString());
+                        cookie.setPath("/");
+                        cookie.setMaxAge(60*60*24);
+                        response.addCookie(cookie);
                         logger.info(res);
                         return "1";
                     } else {
