@@ -18,7 +18,7 @@
         select * from Objects where name like CONCAT('%',#{name},'%')
     </select>
 
-    <select id="getObjectInfo" resultMap="ObjectInfo">
+    <select id="getObjectInfo" resultType="com.share.pojo.Object_1">
         select * from Objects;
     </select>
 
