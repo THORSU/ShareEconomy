@@ -101,7 +101,9 @@ public class ReturnInfoController {
         int resTag = objectInfoService.fixObject(infoPo);
         if (resTag == 1) {
             return 1;
-        } else {
+        } else if (resTag == 2){
+            return 2;
+        }else {
             return 0;
         }
     }

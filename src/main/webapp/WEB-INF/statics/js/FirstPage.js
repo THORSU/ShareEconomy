@@ -21,6 +21,9 @@ function fixObject() {
             if (msg == "1"){
                 alert("感谢报修~");
             }
+            else if (msg == "2"){
+                alert("该商品不存在");
+            }
             else {
                 alert("报修异常");
             }

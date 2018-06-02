@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.ws.ServiceMode;
+import java.util.Objects;
 
 /**
  * Created by sweeney on 2018/5/26.
@@ -32,8 +33,12 @@ public class ObjectInfoServiceImpl implements ObjectInfoService {
     @Override
     public int fixObject(SubObjectInfoPo objectInfoPo) {
         try {
-            objectInfoMapper.fixObject(objectInfoPo);
-            return 1;
+            ObjectInfo objectInfo = objectInfoMapper.getSubObjectInfo(objectInfoPo);
+            if (!Objects.isNull(objectInfo)){
+                objectInfoMapper.fixObject(objectInfoPo);
+                return 1;
+            }
+            else return 2;
         }
         catch (Exception e){
             logger.error("修改状态失败！");
