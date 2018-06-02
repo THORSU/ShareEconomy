@@ -1,61 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Examples</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link href="../css/search.css" rel="stylesheet" type="text/css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>SharedEconomy</title>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script src="../js/FirstPage.js"></script>
+
 </head>
 
 <body>
-<!--<input type="text" id="ss" />-->
-<!--<input type="button" value="查询" onclick="search()" /><br>-->
-<!--<input type="button" onclick="logout()" value="注销"/><br>-->
-<div id="box">
-    <input type="text" name="search" placeholder="请输入关键字" id="ss">
-    <div id="search" onclick="search()">搜索</div>
+<nav id="my_nav" class="navbar navbar-default" role="navigation">
+    <div id="my_nav_div" class="navbar-header">
+        <a class="navbar-brand" href="#">共享经济@</a>
+        <label id="asd"></label>
+        <div id="my_dropdown" class="dropdown">
+            <button type="button" class="btn btn-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user" style="margin:-80px 0 0 200px;"></span>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="Recharge.html">钱包</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="UpdateInfo.html">设置</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="chat.html">客服</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="logout.html">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="res">
+    <div id="box" style="text-align: center">
+        <input type="text" name="search" placeholder="请输入关键字" id="ss">
+        <button id="search" onclick="search()"
+                style="background: black;border: 1px solid purple;color: white;height:26px;margin-left: -5px;">搜索
+        </button>
+    </div>
+    <img class="img" src="" style="width:150px;height: 150px;display: none;" onclick="haveAtry(this.id)">
 </div>
-<div id="res"></div>
-<!--<div id="aas"></div>-->
-</ul>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <ul class="nav nav-tabs">
+        <li><a class="my_nav" href="FirstPage.html">首页&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        </li>
+        <li><a class="my_nav" href="Search.html">发现&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        </li>
+        <li><a class="my_nav" href="Order.html">订单</a></li>
+    </ul>
+</nav>
 </body>
 <script type="text/javascript">
-    var a=new Array();
+    var a = new Array();
 
     function search() {
-        var ss=$("#ss").val();
-        console.log(ss);
+        var ss = $("#ss").val();
         $.ajax({
-            type:"post",
+            type: "post",
             url: "/night/SearchES.from?Search=" + ss,
             dataType: "html",
-            success:function (msg) {
-//                alert(msg);
-//                console.log(msg);
-//                document.write(msg);
+            success: function (msg) {
+                $("img").remove();
                 if (msg == "0") {
                     alert("无此商品");
-                } else{
+                } else {
                     var ss = msg.split(",");//将后端的值按逗号分开，传给ss
-//                document.write(xxx[0]);
                     for (var i = 0; i < ss.length - 1; i++) {
                         var string;
                         var arrayInfo = ss[i].split("&");
-//                        string = ("<a href='" + ss[i] + ".html'>" + ss[i] + "&nbsp;" + "</a>");
-//                         string = ("<a href='"+ss[i]+".html'>"+"<img src='../img/"+ss[i]+".jpg' width='150' height='150'/></a>");
-                        string = ("<img src='../img/" + arrayInfo[0] + ".jpg' width='150' height='150' onclick='haveAtry(" + arrayInfo[1] + ")'/></a>");
+                        console.log(arrayInfo[0])
+                        console.log(arrayInfo[1])
+                        string = ("<img class='img' src='../img/" + arrayInfo[0] + ".jpg' width='150' height='150' onclick='haveAtry(" + arrayInfo[1] + ")'/></a>");
                         $("#res").append(string);
-//                    $("#res").("<input type='button' value='"+ss[i]+"' onclick='test("+ss[i]+")' id='"+ss[i]+"'>");
-//                    document.write("<input type='button' value='"+ss[i]+"' onclick='test("+ss[i]+")' id='"+ss[i]+"'>");
-//                    a.pop(ss[i]);
                     }
                 }
             }
-
         })
     }
 </script>

@@ -2,34 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recharge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>SharedEconomy</title>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav id="my_nav" class="navbar navbar-default" role="navigation">
+    <div id="my_nav_div" class="navbar-header">
+        <a class="navbar-brand" href="#">共享经济@</a>
+        <!--<span  style="text-align: center">-->
+        <label id="asd"></label>
+        <!--</span>-->
+        <div id="my_dropdown" class="dropdown">
+            <button type="button" class="btn btn-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user" style="margin:-80px 0 0 200px;"></span>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="Recharge.html">钱包</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <!--<li role="presentation">-->
+                <!--<a role="menuitem" tabindex="-1" href="#">优惠券</a>-->
+                <!--</li>-->
+                <!--<li role="presentation" class="divider"></li>-->
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="UpdateInfo.html">设置</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="chat.html">客服</a>
+                </li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="logout.html">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--<input type="button" value="充值" onclick= "Recharge()" >-->
+<div style="margin-top: 50%">
+    <div align="center">
+        <input type="button" value="查询余额" onclick="Balance()">
+    </div>
+    <!--</div>-->
 
-<div align="center">
-    <select id="select2" name="demo2">
-        <option selected value="10">10￥</option>
-        <option value="20">20￥</option>
-        <option value="50">50￥</option>
-        <option value="100">100￥</option>
-    </select>
-</div>
+    <div style="margin-left: 20px;text-align: center;margin-top: 20px;">
+        <select id="select2" name="demo2">
+            <option selected value="10">10￥</option>
+            <option value="20">20￥</option>
+            <option value="50">50￥</option>
+            <option value="100">100￥</option>
+        </select>
+        <button style="height: 20px;line-height: 16px;"><a href="#" type="button" data-toggle="modal"
+                                                           data-target="#myModal">充值</a></button>
+    </div>
 
-
-    <!--<input type="button" value="充值" onclick= "Recharge()" >-->
-<div align="center">
-<input type="button" value="查询余额" onclick="Balance()">
-</div>
-<!--</div>-->
-
-<div>
-    <ul class="nav navbar-nav">
-        <li><a href="#" type="button" data-toggle="modal" data-target="#myModal">充值</a></li>
-    </ul>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,7 +99,16 @@
         </div>
     </div>
 </div>
-
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <ul class="nav nav-tabs">
+        <li><a class="my_nav" href="FirstPage.html">首页&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        </li>
+        <li><a class="my_nav" href="Search.html">发现&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+        </li>
+        <li><a class="my_nav" href="Order.html">订单</a></li>
+        <!--<li><a class="my_nav" href="#">我的&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>-->
+    </ul>
+</nav>
 <script type="text/javascript" src="../js/UserOperation.js"></script>
 <link rel="stylesheet" href="../css/houtai_main.css" type="text/css" />
 <script src="../js/houtai_main.js"></script>
