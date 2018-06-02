@@ -1,6 +1,8 @@
 package com.share.controller;
 
 
+import com.share.pojo.Object_1;
+import com.share.service.ObjectService;
 import org.apache.log4j.Logger;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
@@ -10,6 +12,7 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHits;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @Author: QuincySu
@@ -27,6 +31,8 @@ import java.io.IOException;
 @RequestMapping("/night")
 public class SearchObjectController {
     private static Logger logger= Logger.getLogger(SearchObjectController.class);
+    @Autowired
+    private ObjectService objectService;
 
     @RequestMapping(value = "/SearchES.from", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
@@ -47,7 +53,13 @@ public class SearchObjectController {
             String n="";
             if (hits.totalHits()>0){
                 for (int i=0;i<hits.totalHits();i++){
-                    n += (hits.getAt(i).getSource().get("objectName").toString() + ",");
+                    String objectName = hits.getAt(i).getSource().get("objectName").toString();
+                    Object_1 object_1 = objectService.getObjectStatusByName(objectName);
+                    String objectId = "";
+                    if (!Objects.isNull(object_1)) {
+                        objectId = object_1.getId();
+                    }
+                    n += (objectName + "&" + objectId + ",");
                 }
                 System.out.println(n);
                 return n;

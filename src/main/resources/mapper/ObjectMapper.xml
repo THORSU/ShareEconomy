@@ -26,4 +26,8 @@
         select id,object_code as objectCode,merchant_name as merchantName,object_name as objectName,object_price as objectPrice,object_status as objectStatus,
          object_remark as objectRemark from Objects where id=#{objectId};
     </select>
+    <!--查询object状态-->
+    <select id="getObjectStatusByName" parameterType="java.lang.String" resultType="com.share.pojo.Object_1">
+        select * from Objects where object_name=#{objectName};
+    </select>
     </mapper>

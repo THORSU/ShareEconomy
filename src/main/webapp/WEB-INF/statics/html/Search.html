@@ -7,8 +7,10 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link href="../css/search.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/FirstPage.js"></script>
 </head>
-<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+
 <body>
 <!--<input type="text" id="ss" />-->
 <!--<input type="button" value="查询" onclick="search()" /><br>-->
@@ -42,8 +44,10 @@
 //                document.write(xxx[0]);
                     for (var i = 0; i < ss.length - 1; i++) {
                         var string;
+                        var arrayInfo = ss[i].split("&");
 //                        string = ("<a href='" + ss[i] + ".html'>" + ss[i] + "&nbsp;" + "</a>");
-                        string = ("<a href='"+ss[i]+".html'>"+"<img src='../img/"+ss[i]+".jpg' width='150' height='150'/></a>");
+//                         string = ("<a href='"+ss[i]+".html'>"+"<img src='../img/"+ss[i]+".jpg' width='150' height='150'/></a>");
+                        string = ("<img src='../img/" + arrayInfo[0] + ".jpg' width='150' height='150' onclick='haveAtry(" + arrayInfo[1] + ")'/></a>");
                         $("#res").append(string);
 //                    $("#res").("<input type='button' value='"+ss[i]+"' onclick='test("+ss[i]+")' id='"+ss[i]+"'>");
 //                    document.write("<input type='button' value='"+ss[i]+"' onclick='test("+ss[i]+")' id='"+ss[i]+"'>");

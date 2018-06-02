@@ -90,7 +90,18 @@ function haveAtry(msg) {
     console.log(msg);
     document.cookie = "msg=" + msg + ";path = /";
     // alert(document.cookie);
-    window.location.href = "bike.html";
+    $.ajax({
+        type: "post",
+        url: "/cd/checkObjectStatus.from?objectId=" + msg,
+        dataType: "html",
+        success: function (msg) {
+            if (msg == "status error") {
+                alert("未上架")
+            } else {
+                window.location.href = "bike.html";
+            }
+        }
+    })
 }
 
 
