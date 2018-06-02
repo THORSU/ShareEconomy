@@ -43,16 +43,16 @@ public class WebSocket {
             try {
                 item.sendMessage("我说："+message,session);
                 if (message.contains("你好")){
-                    item.sendMessage("服务端："+"你好",session);
+                    item.sendMessage("小资客服："+"你好",session);
                 }
                 else if (message.contains("坏")){
-                    item.sendMessage("服务端："+"物品编号发一下，谢谢",session);
+                    item.sendMessage("小资客服："+"物品编号发一下，谢谢",session);
                 }
                 else if (message.contains("商品")){
-                    item.sendMessage("服务端："+"若想了解商品信息，请到搜索页面或到首页进行查看",session);
+                    item.sendMessage("小资客服："+"若想了解商品信息，请到搜索页面或到首页进行查看",session);
                 }
                 else {
-                    item.sendMessage("服务端："+"具体细节请联系02210140228",session);
+                    item.sendMessage("小资客服："+"具体细节请联系02210140228",session);
                 }
 //                Scanner scanner=new Scanner(System.in);
 //                while (scanner.hasNextLine()){
