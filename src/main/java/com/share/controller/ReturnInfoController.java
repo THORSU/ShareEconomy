@@ -112,7 +112,9 @@ public class ReturnInfoController {
     Object checkObjectStatus(HttpServletRequest request, HttpServletResponse response) {
         String objectId = request.getParameter("objectId").trim();
         Object_1 res = objectService.getInfoByObjectId(objectId);
-        if (!Objects.isNull(res) && res.getObjectStatus().equals("0")) {
+        if (Objects.isNull(res)) {
+            return "status error";
+        } else if (res.getObjectStatus().equals("0")) {
             return "status error";
         }
         return null;

@@ -70,16 +70,19 @@ public class UserServiceimpl implements UserService {
                     }
                 }
                 User userInfo = userForRedisService.findUserInfo(user.getUname());
-                if (StringUtils.isNotEmpty(uPwd)) {
-                    userInfo.setUpwd(uPwd);
+                if (!Objects.isNull(userInfo)) {
+                    if (StringUtils.isNotEmpty(uPwd)) {
+                        userInfo.setUpwd(uPwd);
+                    }
+                    if (StringUtils.isNotEmpty(uName)) {
+                        userInfo.setAlias(uName);
+                    }
+                    userForRedisService.insertUserInfo(userInfo);
                 }
-                if (StringUtils.isNotEmpty(uName)) {
-                    userInfo.setAlias(uName);
-                }
-                userForRedisService.insertUserInfo(userInfo);
                 return userMapper.UpdateInfo(user);
+            } else {
+                return 0;
             }
-            else return 0;
         }catch (Exception e){
             return 0;
         }
