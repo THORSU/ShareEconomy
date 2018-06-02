@@ -18,4 +18,12 @@ public interface ObjectService {
     List<Object_1> getObjectInfo();
 
     Object_1 getInfoByObjectId(String objectId);
+
+    /**
+     * 获取商品状态
+     *
+     * @param objectName
+     * @return
+     */
+    public Object_1 getObjectStatusByName(String objectName);
 }

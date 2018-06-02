@@ -9,4 +9,6 @@ import com.share.pojo.po.SubObjectInfoPo;
 public interface ObjectInfoService {
 
     ObjectInfo getSubObjectInfo(SubObjectInfoPo subObjectInfoPo);
+
+    int fixObject(SubObjectInfoPo objectInfoPo);
 }

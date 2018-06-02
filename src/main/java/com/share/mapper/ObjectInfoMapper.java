@@ -22,4 +22,10 @@ public interface ObjectInfoMapper {
      * @return
      */
     String getSubObjectCode (@Param("id") Long SubObjectId);
+
+    /**
+     * 报修某子商品
+     * @param objectInfoPo
+     */
+    void fixObject(SubObjectInfoPo objectInfoPo);
 }

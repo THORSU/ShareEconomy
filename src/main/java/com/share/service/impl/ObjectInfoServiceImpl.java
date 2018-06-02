@@ -28,4 +28,16 @@ public class ObjectInfoServiceImpl implements ObjectInfoService {
         }
         return new ObjectInfo();
     }
+
+    @Override
+    public int fixObject(SubObjectInfoPo objectInfoPo) {
+        try {
+            objectInfoMapper.fixObject(objectInfoPo);
+            return 1;
+        }
+        catch (Exception e){
+            logger.error("修改状态失败！");
+            return 0;
+        }
+    }
 }

@@ -72,4 +72,14 @@ public class ObjectServiceimpl implements ObjectService {
         }
         return null;
     }
+
+    @Override
+    public Object_1 getObjectStatusByName(String objectName) {
+        try {
+            return objectMapper.getObjectStatusByName(objectName);
+        } catch (Exception e) {
+            logger.error("查询失败！");
+        }
+        return null;
+    }
 }

@@ -18,4 +18,12 @@ public interface ObjectMapper {
     List<Object_1> getObjectInfo();
 
     Object_1 getInfoByObjectId(@Param("objectId") String objectId);
+
+    /**
+     * 获取商品状态
+     *
+     * @param objectName
+     * @return
+     */
+    public Object_1 getObjectStatusByName(String objectName);
 }
