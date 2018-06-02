@@ -9,8 +9,7 @@
 
     <script src="../js/amazeui.min.js"></script>
     <script src="../js/jquery.mins.js"></script>
-    <link rel="stylesheet" href="../css/amazeui.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <!--<link rel="stylesheet" href="../css/amazeui.min.css">-->
 
 </head>
 <script>
@@ -20,67 +19,59 @@
             url: "order/getOrders.form",
             success: function (msg) {
                 console.log(msg);
-//                $("#code").text(msg[0].);
-                $.each(msg, function (index, value) {
-                    console.log(index);
-                    console.log(value);
-                    var price = value.price;
-                    var bill = value.bill;
-                    var period = value.period;
-                    var orderCode = value.orderCode;
-                    var objectName = value.objectName;
-                    console.log(bill);
-                    $("#price").append(price);
-                    $("#amount").append(bill);
-                    $("#code").append(orderCode);
-                    $("#time").append(period);
-                    $("#fact").append(bill);
-                    $("#objectName").append(objectName);
-                })
-
+                for (var i = 0; i < msg.length; i++) {
+                    $(".father").append("<div style='height: 120px;border: 1px solid silver;'> <div> <span>订单编号：</span> <span class=\"bh\">" + msg[i]['orderCode'] + " &nbsp;&nbsp;&nbsp;\n" +
+                        "                &nbsp;&nbsp;&nbsp;&nbsp\n" +
+                        "                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
+                        "                <span style=\"color: indianred;\">已归还</span>\n" +
+                        "            </div>\n" +
+                        "            <div>\n" +
+                        "                <div>\n" +
+                        "                    <img src=\"../img/3.jpg\" style=\"width: 20%;height: 75px;\">\n" +
+                        "                </div>\n" +
+                        "                <div style=\"float: left;margin-top:-75px;margin-left: 75px; \">\n" +
+                        "                    <div>商品名：" + msg[i]['objectName'] + "</div>\n" +
+                        "                    <div>单价：" + msg[i]['price'] + "</div>\n" +
+                        "                    <div>合计：" + msg[i]['bill'] + "</div>\n" +
+                        "                    <div  style=\"margin-left: 180px;margin-top: -10px;\">实付金额：" + msg[i]['bill'] + "</div>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </div>");
+                }
             }
         })
     }
 
 </script>
-<body>
-<header data-am-widget="header" class="am-header am-header-default header">
-    <div class="am-header-left am-header-nav">
-        <a href="#left-link" class="">
-            <i class="am-header-icon am-icon-angle-left"></i>
-        </a>
+<body style="margin: 0px;padding: 0px;">
+<h1 style="text-align: center">全部订单</h1>
+<div class="father">
+    <!--<div style="height: 120px;border: 1px solid silver;">-->
+    <!--<div >-->
+    <!--<span>订单编号：</span>-->
+    <!--<span class="bh">123412341234</span>-->
+    <!--&nbsp;&nbsp;&nbsp;-->
+    <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <!--<span style="color: indianred;">已归还</span>-->
+    <!--</div>-->
+    <!--<div>-->
+    <!--<div>-->
+    <!--<img src="../img/3.jpg" style="width: 20%;height: 75px;">-->
+    <!--</div>-->
+    <!--<div style="float: left;margin-top:-75px;margin-left: 75px; ">-->
+    <!--<div>商品名：</div>-->
+    <!--<div>单价：</div>-->
+    <!--<div>合计：</div>-->
+    <!--<div style="margin-left: 180px;margin-top: -10px;">实付金额：</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
     </div>
-    <h1 class="am-header-title"><a href="#title-link" class="" style="color: #333;">全部订单</a></h1>
-    <div class="am-header-right am-header-nav">
-        <a href="#right-link" class=""> </a>
-    </div>
-</header>
-<div class="cate-search" style="position: relative; top: 0; border-bottom: 0;">
-    <input type="text" class="cate-input" placeholder="">
-    <input type="button" class="cate-btn">
-</div>
-<ul class="order-style">
-    <li class="current"><a href="allorder.html">全部</a></li>
-</ul>
-<div class="c-comment">
-    <span class="c-comment-num">订单编号：<label id="code"></label></span>
-    <span class="c-comment-suc">以归还</span>
-</div>
-<div class="c-comment-list" style="border: 0;">
-    <a class="o-con" href="">
-        <div class="o-con-img"><img src="../img/3.jpg" height="375" width="500"/></div>
-        <div class="o-con-txt">
-            <p id="objectName"></p>
-            <!--<p class="price">单价：￥<label id="price"></label></p>-->
-            <p>单价：<span>￥<label id="price"></label></span></p>
-            <p>合计：<span>￥<label id="amount"></label></span></p>
-        </div>
-        <div class="o-con-much" i><h4><label id="time"></label></label></h4></div>
-    </a>
-    <div class="c-com-money">实付金额：<span>￥<label id="fact"></label></span></div>
-</div>
-<div class="c-com-btn">
-    <a href="FirstPage.html">返回</a>
+
+<div style="margin-left: 83%">
+    <div style="width: 60px;height:20px;border: 1px solid darkred;text-align: center;line-height: 20px;color: darkred;font-size: 7px;">
+        <a href="FirstPage.html" style="text-decoration:none">返回</a></div>
 </div>
 </body>
 </html>
