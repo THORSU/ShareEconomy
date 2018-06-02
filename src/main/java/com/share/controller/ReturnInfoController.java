@@ -6,9 +6,11 @@ import com.share.pojo.po.SubObjectInfoPo;
 import com.share.service.ObjectInfoService;
 import com.share.service.ObjectService;
 import com.share.util.DatetimeUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,12 +59,15 @@ public class ReturnInfoController {
                 cookie.setMaxAge(60*60*24);
                 response.addCookie(cookie);
             }
-            //主商品id加子商品Code加入cookie
-            Cookie cookie = new Cookie("objectId&subObjectId&startTime",objectId+"&"+objectInfo.getId()+"&"+ DatetimeUtil.currentDate("HH:mm:ss"));
-            cookie.setPath("/");
-            cookie.setMaxAge(60*60*24);
-            response.addCookie(cookie);
-            return objectInfo.getPassword();
+            if ("0".equals(objectInfo.getCondition())){
+                //主商品id加子商品Code加入cookie
+                Cookie cookie = new Cookie("objectId&subObjectId&startTime",objectId+"&"+objectInfo.getId()+"&"+ DatetimeUtil.currentDate("HH:mm:ss"));
+                cookie.setPath("/");
+                cookie.setMaxAge(60*60*24);
+                response.addCookie(cookie);
+                return objectInfo.getPassword();
+            }
+            else return "badObject";
         }else {
             return "null";
         }
@@ -79,5 +84,25 @@ public class ReturnInfoController {
     @ResponseBody
     List<Object_1> getObjectInfo(HttpServletRequest request, HttpServletResponse response){
         return objectService.getObjectInfo();
+    }
+
+
+    @RequestMapping(value = "/fixObject.from",method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    public
+    @ResponseBody
+    Object fixObject(HttpServletRequest request,HttpServletResponse response){
+        String objectId = request.getParameter("objectId").trim();
+        String subObjectCode = request.getParameter("subObjectCode").trim();
+        SubObjectInfoPo infoPo = new SubObjectInfoPo();
+        if (StringUtils.isNotBlank(subObjectCode) && StringUtils.isNotBlank(objectId)){
+            infoPo.setObjectId(Long.valueOf(objectId));
+            infoPo.setCode(subObjectCode);
+        }
+        int resTag = objectInfoService.fixObject(infoPo);
+        if (resTag==1){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }

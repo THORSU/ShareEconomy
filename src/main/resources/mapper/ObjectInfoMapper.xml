@@ -16,4 +16,9 @@
     <select id="getSubObjectCode" parameterType="java.lang.Long" resultType="java.lang.String">
         select s.sub_code from objectTable s where s.id = #{id};
     </select>
+
+    <update id="fixObject" parameterType="com.share.pojo.po.SubObjectInfoPo">
+        UPDATE objectTable
+        set `condition` = 1 where objectId = #{objectId} and sub_code = #{code};
+    </update>
 </mapper>
